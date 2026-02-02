@@ -915,6 +915,14 @@
     color: color-mix(in oklch, var(--clr-charcoal), transparent 35%);
   }
 
+  .form-success {
+    background: var(--clr-sage-light);
+    border: 1px solid var(--clr-sage);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    text-align: center;
+  }
+
   /* ---------- Privacy Policy ---------- */
   .prose {
     max-inline-size: var(--content-width);
