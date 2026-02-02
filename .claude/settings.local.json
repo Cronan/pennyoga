@@ -31,7 +31,14 @@
       "Bash(file:*)",
       "Bash(identify:*)",
       "Bash(convert:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(curl:*)",
+      "WebFetch(domain:www.geograph.org.uk)",
+      "WebFetch(domain:lgva.org.uk)",
+      "WebFetch(domain:www.nationalchurchestrust.org)",
+      "WebFetch(domain:historicengland.org.uk)",
+      "WebFetch(domain:www.stpetersberkhamsted.org.uk)",
+      "Bash(git rm:*)"
     ]
   }
 }

@@ -20,15 +20,15 @@ home:
 
 classes:
   - name: "Mondays in Berkhamsted"
-    venue: "Quaker Meeting House"
+    venue: "The Court House"
     location: "Berkhamsted"
     day: "Monday"
-    time: "7:35pm to 8:50pm"
+    time: "7:45pm to 9:00pm"
     price: "£12"
-    notes: ""
+    notes: "Church Lane, Berkhamsted, HP4 2AX"
     online: false
-    image: ""
-    image_alt: "Quaker Meeting House, Berkhamsted"
+    image: "court-house-card.jpg"
+    image_alt: "The Court House, Church Lane, Berkhamsted"
 
   - name: "Tuesdays in Hemel Hempstead"
     venue: "Leverstock Green Village Hall"
