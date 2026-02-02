@@ -36,21 +36,21 @@ classes:
     day: "Tuesday"
     time: "12:30pm to 1:45pm and 2:00pm to 3:15pm"
     price: "£10"
-    notes: "Two classes available"
+    notes: "Two classes available. Leverstock Green, Hemel Hempstead, HP3 8QG"
     online: false
     image: ""
     image_alt: "Leverstock Green Village Hall, Hemel Hempstead"
 
   - name: "Thursdays in Hemel Hempstead"
-    venue: "Carey Baptist Church Hall"
+    venue: "Carey Baptist Church"
     location: "Hemel Hempstead"
     day: "Thursday"
     time: "2:00pm to 3:15pm"
     price: "£10"
-    notes: ""
+    notes: "Marlowes, Hemel Hempstead, HP1 1LD"
     online: false
-    image: ""
-    image_alt: "Carey Baptist Church Hall, Hemel Hempstead"
+    image: "carey-baptist-card.jpg"
+    image_alt: "Carey Baptist Church, Hemel Hempstead"
 
   - name: "Wednesday Online Class"
     venue: "Zoom"
