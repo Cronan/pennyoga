@@ -41,8 +41,13 @@ function buildClassCards(classes) {
       ? `<p class="class-card__notes">${escapeHtml(cls.notes.trim())}</p>`
       : '';
 
+    const image = cls.image
+      ? `<img src="images/${cls.image}" alt="${escapeHtml(cls.image_alt || cls.venue)}" class="class-card__image" width="400" height="200" loading="lazy">`
+      : '';
+
     return `
       <article class="class-card fade-in">
+        ${image}
         <p class="class-card__day">${escapeHtml(cls.day)}</p>
         <h3 class="class-card__name">${escapeHtml(cls.name)}</h3>
         <p class="class-card__detail">

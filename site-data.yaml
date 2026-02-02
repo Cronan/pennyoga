@@ -27,6 +27,8 @@ classes:
     price: "£12"
     notes: ""
     online: false
+    image: ""
+    image_alt: "Quaker Meeting House, Berkhamsted"
 
   - name: "Tuesdays in Hemel Hempstead"
     venue: "Leverstock Green Village Hall"
@@ -36,6 +38,8 @@ classes:
     price: "£10"
     notes: "Two classes available"
     online: false
+    image: ""
+    image_alt: "Leverstock Green Village Hall, Hemel Hempstead"
 
   - name: "Thursdays in Hemel Hempstead"
     venue: "Carey Baptist Church Hall"
@@ -45,6 +49,8 @@ classes:
     price: "£10"
     notes: ""
     online: false
+    image: ""
+    image_alt: "Carey Baptist Church Hall, Hemel Hempstead"
 
   - name: "Wednesday Online Class"
     venue: "Zoom"

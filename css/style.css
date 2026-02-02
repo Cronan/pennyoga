@@ -457,10 +457,56 @@
     font-style: italic;
   }
 
+  .pablo-tribute__text {
+    cursor: pointer;
+  }
+
   .pablo-tribute__paw {
     display: inline-block;
     margin-inline-start: 0.3em;
     font-style: normal;
+    transition: transform var(--transition-base);
+  }
+
+  .pablo-tribute__text:hover .pablo-tribute__paw {
+    transform: scale(1.3);
+  }
+
+  .pablo-toggle {
+    display: none;
+  }
+
+  .pablo-reveal {
+    max-block-size: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition:
+      max-block-size var(--transition-slow),
+      opacity var(--transition-slow),
+      margin var(--transition-slow);
+    margin-block-start: 0;
+    text-align: center;
+  }
+
+  .pablo-toggle:checked ~ .pablo-reveal {
+    max-block-size: 400px;
+    opacity: 1;
+    margin-block-start: var(--space-md);
+  }
+
+  .pablo-reveal__image {
+    max-inline-size: 320px;
+    inline-size: 100%;
+    block-size: auto;
+    border-radius: var(--radius-lg);
+    margin-inline: auto;
+    box-shadow: var(--shadow-md);
+  }
+
+  .pablo-reveal__caption {
+    font-size: var(--font-size-sm);
+    margin-block-start: var(--space-xs);
+    color: color-mix(in oklch, var(--clr-charcoal), transparent 45%);
   }
 }
 
@@ -619,13 +665,40 @@
     background: var(--clr-white);
     border: 1px solid var(--clr-border);
     border-radius: var(--radius-lg);
-    padding: var(--space-lg);
+    padding: 0;
     display: flex;
     flex-direction: column;
     gap: var(--space-sm);
+    overflow: hidden;
     transition:
       box-shadow var(--transition-base),
       transform var(--transition-base);
+  }
+
+  .class-card__image {
+    inline-size: 100%;
+    block-size: auto;
+    aspect-ratio: 2 / 1;
+    object-fit: cover;
+  }
+
+  .class-card__body {
+    padding: var(--space-lg);
+    padding-block-start: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    flex: 1;
+  }
+
+  /* Cards without images get padding on all sides */
+  .class-card:not(:has(.class-card__image)) {
+    padding: var(--space-lg);
+  }
+
+  .class-card:has(.class-card__image) .class-card__day {
+    padding-inline: var(--space-lg);
+    padding-block-start: var(--space-md);
   }
 
   .class-card:hover {
