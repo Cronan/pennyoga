@@ -466,8 +466,8 @@
 
   .pablo-tribute__paw {
     display: inline-block;
-    margin-inline-start: 0.3em;
-    font-style: normal;
+    vertical-align: middle;
+    margin-inline: 0.3em;
     transition: transform var(--transition-base);
   }
 
