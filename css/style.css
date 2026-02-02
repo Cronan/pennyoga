@@ -455,6 +455,9 @@
     font-size: var(--font-size-sm);
     color: color-mix(in oklch, var(--clr-charcoal), transparent 45%);
     font-style: italic;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
   }
 
   .pablo-tribute__text {
@@ -484,14 +487,14 @@
       max-block-size var(--transition-slow),
       opacity var(--transition-slow),
       margin var(--transition-slow);
-    margin-block-end: 0;
+    margin-block-start: 0;
     text-align: center;
   }
 
   .pablo-toggle:checked ~ .pablo-reveal {
     max-block-size: 400px;
     opacity: 1;
-    margin-block-end: var(--space-md);
+    margin-block-start: var(--space-md);
   }
 
   .pablo-reveal__image {
