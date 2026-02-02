@@ -57,7 +57,7 @@
         <button type="submit" class="btn btn--primary form-submit">Send Message</button>
         <p class="form-privacy">Your information is sent securely and used only to respond to your enquiry. See our <a href="privacy-policy.html">privacy policy</a>.</p>
       </form>
-      <div id="form-success" class="form-success" hidden>
+      <div id="form-success" class="form-success" style="display:none;">
         <p><strong>Thank you for your message.</strong></p>
         <p>I will get back to you as soon as possible.</p>
       </div>
@@ -74,8 +74,8 @@
             headers: { 'Accept': 'application/json' }
           }).then(function(r) {
             if (r.ok) {
-              form.hidden = true;
-              document.getElementById('form-success').hidden = false;
+              form.style.display = 'none';
+              document.getElementById('form-success').style.display = 'block';
             } else {
               btn.disabled = false;
               btn.textContent = 'Send Message';
