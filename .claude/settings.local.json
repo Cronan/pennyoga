@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node:*)",
+      "Bash(npm --version:*)",
+      "Bash(bash:*)",
+      "Bash(git --version)",
+      "Bash(pip3 --version:*)",
+      "Bash(gcc:*)",
+      "Bash(java:*)",
+      "Bash(ruby:*)",
+      "Bash(go version:*)",
+      "Bash(rustc:*)",
+      "Bash(docker:*)",
+      "Bash(php:*)",
+      "WebFetch(domain:pennyoga.co.uk)",
+      "WebSearch",
+      "WebFetch(domain:www.pennyoga.co.uk)",
+      "Bash(npm install)",
+      "Bash(ssh:*)",
+      "Bash(gh:*)",
+      "Bash(git config:*)",
+      "Bash(ssh-keygen:*)",
+      "Bash(sudo apt-get update:*)",
+      "Bash(sudo apt-get install:*)",
+      "Bash(git init:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "pennyoga",
+  "version": "1.0.0",
+  "description": "Gentle Yoga With Penny - static website",
+  "private": true,
+  "scripts": {
+    "build": "node build.js",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  }
+}
