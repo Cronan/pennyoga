@@ -38,7 +38,7 @@ classes:
     price: "£10"
     notes: "Two classes available. Leverstock Green, Hemel Hempstead, HP3 8QG"
     online: false
-    image: ""
+    image: "leverstock-green-card.jpg"
     image_alt: "Leverstock Green Village Hall, Hemel Hempstead"
 
   - name: "Thursdays in Hemel Hempstead"
