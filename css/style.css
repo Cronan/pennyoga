@@ -1,5 +1,5 @@
 /* ============================================================
-   Gentle Yoga With Penny — Stylesheet
+   Gentle Yoga With Penny - Stylesheet
    ============================================================ */
 
 /* --- Cascade Layers --- */
@@ -59,7 +59,7 @@
 }
 
 /* ============================================================
-   LAYER: Base — Design tokens & typography
+   LAYER: Base - Design tokens & typography
    ============================================================ */
 @layer base {
   :root {
@@ -177,7 +177,7 @@
 }
 
 /* ============================================================
-   LAYER: Layout — Page structure, grid, nav
+   LAYER: Layout - Page structure, grid, nav
    ============================================================ */
 @layer layout {
   /* Skip link */
@@ -282,7 +282,7 @@
     }
   }
 
-  /* Mobile nav — CSS-only hamburger using checkbox hack */
+  /* Mobile nav - CSS-only hamburger using checkbox hack */
   .nav-toggle {
     display: none;
   }
@@ -467,7 +467,7 @@
 }
 
 /* ============================================================
-   LAYER: Components — Cards, buttons, hero, form, etc.
+   LAYER: Components - Cards, buttons, hero, form, etc.
    ============================================================ */
 @layer components {
   /* ---------- Buttons ---------- */
@@ -807,6 +807,25 @@
     }
   }
 
+  .bwy-logo-link {
+    display: block;
+    margin-block-start: var(--space-xl);
+    width: fit-content;
+  }
+
+  .bwy-logo {
+    display: block;
+    border-radius: var(--radius-md);
+    width: 100px;
+    height: auto;
+  }
+
+  @media (min-width: 768px) {
+    .bwy-logo {
+      width: 120px;
+    }
+  }
+
   /* ---------- Contact ---------- */
   .contact-layout {
     display: grid;
@@ -1017,7 +1036,7 @@
 }
 
 /* ============================================================
-   Reduced motion — disable all animations and transitions
+   Reduced motion - disable all animations and transitions
    ============================================================ */
 @media (prefers-reduced-motion: reduce) {
   *,
