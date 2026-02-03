@@ -746,7 +746,16 @@
     aspect-ratio: 3 / 4;
     object-fit: cover;
     inline-size: 100%;
+    max-inline-size: 280px;
+    margin-inline: auto;
     box-shadow: var(--shadow-md);
+  }
+
+  @media (min-width: 768px) {
+    .about-intro__image {
+      max-inline-size: none;
+      margin-inline: 0;
+    }
   }
 
   .experience-list {
