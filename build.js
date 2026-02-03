@@ -85,7 +85,7 @@ const pages = [
     slug: 'about.html',
     template: 'about.html',
     title: 'About Penny',
-    description: 'About Penny Cronyn — British Wheel of Yoga qualified teacher since 2004',
+    description: 'About Penny Cronyn - British Wheel of Yoga qualified teacher since 2004',
     navKey: 'about',
   },
   {
