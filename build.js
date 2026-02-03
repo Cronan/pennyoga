@@ -106,7 +106,6 @@ const sharedVars = {
   business_phone: data.business.phone,
   business_phone_tel: data.business.phone.replace(/\s/g, ''),
   business_phone_display: data.business.phone_display,
-  business_facebook_url: data.business.facebook_url,
   business_domain: data.business.domain,
   current_year: String(currentYear),
 
