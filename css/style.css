@@ -603,7 +603,13 @@
     container-type: inline-size;
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--space-lg);
+    gap: var(--space-xl);
+  }
+
+  @container (min-width: 500px) {
+    .class-grid {
+      gap: var(--space-lg);
+    }
   }
 
   @container (min-width: 500px) {
@@ -641,6 +647,7 @@
     flex-direction: column;
     gap: var(--space-sm);
     overflow: hidden;
+    box-shadow: var(--shadow-sm);
     transition:
       box-shadow var(--transition-base),
       transform var(--transition-base);
@@ -690,8 +697,8 @@
 
   .class-card__name {
     font-size: var(--font-size-lg);
-    font-weight: 600;
-    color: var(--clr-charcoal);
+    font-weight: 700;
+    color: var(--clr-teal-dark);
   }
 
   .class-card__detail {
