@@ -374,7 +374,13 @@
 
   /* Section spacing */
   .section {
-    padding-block: var(--space-3xl);
+    padding-block: var(--space-xl);
+  }
+
+  @media (min-width: 768px) {
+    .section {
+      padding-block: var(--space-3xl);
+    }
   }
 
   .section--alt {
@@ -430,6 +436,11 @@
     display: flex;
     flex-direction: column;
     gap: var(--space-xs);
+  }
+
+  .site-footer__contact-list a {
+    display: inline-block;
+    padding-block: var(--space-xs);
   }
 
   .site-footer__copy {
@@ -520,8 +531,14 @@
   .hero {
     position: relative;
     background-color: var(--clr-cream);
-    padding-block: var(--space-4xl);
+    padding-block: var(--space-2xl);
     overflow: hidden;
+  }
+
+  @media (min-width: 768px) {
+    .hero {
+      padding-block: var(--space-4xl);
+    }
   }
 
   .hero__inner {
@@ -648,6 +665,7 @@
   .class-card:has(.class-card__image) .class-card__name,
   .class-card:has(.class-card__image) .class-card__detail,
   .class-card:has(.class-card__image) .class-card__notes,
+  .class-card:has(.class-card__image) .class-card__map,
   .class-card:has(.class-card__image) .class-card__price,
   .class-card:has(.class-card__image) .class-card__cta {
     padding-inline: var(--space-lg);
@@ -711,6 +729,7 @@
 
   .class-card__cta {
     margin-block-start: var(--space-sm);
+    display: block;
   }
 
   .class-card__map {
