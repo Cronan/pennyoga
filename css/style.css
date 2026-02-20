@@ -909,7 +909,7 @@
 
   .bwy-logo {
     display: block;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius);
     width: 100px;
     height: auto;
   }
@@ -971,64 +971,9 @@
     }
   }
 
-  /* Form */
-  .contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-md);
-  }
-
-  .form-field {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-xs);
-  }
-
-  .form-field label {
-    font-weight: 500;
-    font-size: var(--font-size-sm);
-  }
-
-  .form-field input,
-  .form-field textarea {
-    padding: var(--space-sm) var(--space-md);
-    border: 1px solid var(--clr-border);
-    border-radius: var(--radius);
-    background: var(--clr-white);
-    color: var(--clr-charcoal);
-    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
-
-    &:focus {
-      outline: none;
-      border-color: var(--clr-teal);
-      box-shadow: 0 0 0 3px var(--clr-teal-light);
-    }
-
-    &::placeholder {
-      color: color-mix(in oklch, var(--clr-charcoal), transparent 60%);
-    }
-  }
-
-  .form-field textarea {
-    min-block-size: 150px;
-    resize: vertical;
-  }
-
-  .form-submit {
-    align-self: flex-start;
-  }
-
-  .form-privacy {
+  .contact-info__reassurance {
     font-size: var(--font-size-sm);
     color: color-mix(in oklch, var(--clr-charcoal), transparent 35%);
-  }
-
-  .form-success {
-    background: var(--clr-sage-light);
-    border: 1px solid var(--clr-sage);
-    border-radius: var(--radius-lg);
-    padding: var(--space-xl);
-    text-align: center;
   }
 
   /* ---------- Privacy Policy ---------- */
