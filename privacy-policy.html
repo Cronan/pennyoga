@@ -65,7 +65,7 @@
         <p>We retain your contact form submission only for as long as necessary to respond to your enquiry and any subsequent class bookings. We do not maintain a marketing database.</p>
 
         <h2>Cookies</h2>
-        <p>This website does not use cookies. We do not use analytics, tracking pixels, or any third-party embeds that set cookies.</p>
+        <p>This website does not set its own cookies and does not use analytics or tracking pixels. Our homepage includes embedded Google Maps to show class venue locations. Google may set cookies when these maps load. You can learn more about how Google uses cookies at <a href="https://policies.google.com/technologies/cookies" rel="noopener noreferrer" target="_blank">policies.google.com/technologies/cookies</a>.</p>
 
         <h2>Your rights</h2>
         <p>Under UK data protection law (UK GDPR), you have the right to:</p>
@@ -90,6 +90,21 @@
       </div>
     </section>
   </main>
+
+  <button class="back-to-top" data-visible="false" aria-label="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+  <script>
+    (function() {
+      var btn = document.querySelector('.back-to-top');
+      window.addEventListener('scroll', function() {
+        btn.setAttribute('data-visible', window.scrollY > 300 ? 'true' : 'false');
+      });
+      btn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
+  </script>
 
   <footer class="site-footer">
     <div class="container">

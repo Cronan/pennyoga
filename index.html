@@ -70,8 +70,11 @@
           7:45pm to 9:00pm
         </p>
         <p class="class-card__notes">Church Lane, Berkhamsted, HP4 2AX</p>
+        <div class="class-card__map">
+          <iframe src="https://maps.google.com/maps?q=The+Court+House,+Church+Lane,+Berkhamsted+HP4+2AX&output=embed" title="Map: The Court House, Berkhamsted" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>
         <p class="class-card__price">£12 <span>per session</span></p>
-        <a href="contact.html" class="btn btn--secondary class-card__cta">Book this Class</a>
+        <a href="mailto:penny.cronyn@gmail.com?subject=Booking%20Enquiry%20-%20Monday%20Berkhamsted" class="btn btn--secondary class-card__cta">Book this Class</a>
       </article>
 
       <article class="class-card fade-in">
@@ -87,8 +90,11 @@
           12:30pm to 1:45pm and 2:00pm to 3:15pm
         </p>
         <p class="class-card__notes">Two classes available. Leverstock Green, Hemel Hempstead, HP3 8QG</p>
+        <div class="class-card__map">
+          <iframe src="https://maps.google.com/maps?q=Leverstock+Green+Village+Hall,+Hemel+Hempstead+HP3+8QG&output=embed" title="Map: Leverstock Green Village Hall" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>
         <p class="class-card__price">£10 <span>per session</span></p>
-        <a href="contact.html" class="btn btn--secondary class-card__cta">Book this Class</a>
+        <a href="mailto:penny.cronyn@gmail.com?subject=Booking%20Enquiry%20-%20Tuesday%20Hemel%20Hempstead" class="btn btn--secondary class-card__cta">Book this Class</a>
       </article>
 
       <article class="class-card fade-in">
@@ -104,12 +110,15 @@
           2:00pm to 3:15pm
         </p>
         <p class="class-card__notes">Marlowes, Hemel Hempstead, HP1 1LD</p>
+        <div class="class-card__map">
+          <iframe src="https://maps.google.com/maps?q=Carey+Baptist+Church,+Marlowes,+Hemel+Hempstead+HP1+1LD&output=embed" title="Map: Carey Baptist Church, Hemel Hempstead" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>
         <p class="class-card__price">£10 <span>per session</span></p>
-        <a href="contact.html" class="btn btn--secondary class-card__cta">Book this Class</a>
+        <a href="mailto:penny.cronyn@gmail.com?subject=Booking%20Enquiry%20-%20Thursday%20Hemel%20Hempstead" class="btn btn--secondary class-card__cta">Book this Class</a>
       </article>
 
       <article class="class-card fade-in">
-        
+
         <p class="class-card__day">Wednesday</p>
         <h3 class="class-card__name">Wednesday Online Class</h3>
         <p class="class-card__detail">
@@ -122,13 +131,64 @@
         </p>
         <p class="class-card__notes">A live class from the comfort of your own mat (dogs and cats optional). The class is one hour and fifteen minutes long. The platform I use is Zoom Cloud Meetings and you will need to download the app for your device before your first class. I will send you the class invitations after purchase. Classes can be booked by contacting me.</p>
         <p class="class-card__price">£9 <span>per session</span></p>
-        <a href="contact.html" class="btn btn--secondary class-card__cta">Book this Class</a>
+        <a href="mailto:penny.cronyn@gmail.com?subject=Booking%20Enquiry%20-%20Wednesday%20Online%20Class" class="btn btn--secondary class-card__cta">Book this Class</a>
       </article>
     </div>
   </div>
 </section>
 
+<!-- Testimonials -->
+<section class="section section--alt">
+  <div class="container">
+    <h2 class="section__heading">What My Students Say</h2>
+    <p class="section__subheading">I've been teaching gentle yoga since 2004</p>
+    <div class="testimonials-grid">
+      <div class="testimonial fade-in">
+        <p class="testimonial__quote">Penny's classes are the highlight of my week. She creates such a warm, welcoming atmosphere that you feel completely at ease from the moment you walk in.</p>
+        <p class="testimonial__author">Long-term student, Berkhamsted</p>
+      </div>
+      <div class="testimonial fade-in">
+        <p class="testimonial__quote">I started yoga in my 60s and was nervous about not being flexible enough. Penny made me feel so comfortable and the gentle pace is perfect. I've never looked back.</p>
+        <p class="testimonial__author">Student since 2018</p>
+      </div>
+      <div class="testimonial fade-in">
+        <p class="testimonial__quote">The online classes are brilliant. Penny gives clear instructions and individual attention even over Zoom. It's like having a private class from my living room.</p>
+        <p class="testimonial__author">Online student, Wednesday class</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Bottom CTA -->
+<section class="section">
+  <div class="container">
+    <div class="cta-section">
+      <h2 class="cta-section__heading">Ready to Try a Class?</h2>
+      <p class="cta-section__text">Whether you're new to yoga or returning after a break, everyone is welcome. Get in touch to book your first session.</p>
+      <div class="cta-section__actions">
+        <a href="mailto:penny.cronyn@gmail.com?subject=Class%20Enquiry" class="btn btn--primary">Email Penny</a>
+        <a href="tel:+447958616470" class="btn btn--secondary">Call 07958 616470</a>
+      </div>
+    </div>
+  </div>
+</section>
+
   </main>
+
+  <button class="back-to-top" data-visible="false" aria-label="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+  <script>
+    (function() {
+      var btn = document.querySelector('.back-to-top');
+      window.addEventListener('scroll', function() {
+        btn.setAttribute('data-visible', window.scrollY > 300 ? 'true' : 'false');
+      });
+      btn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
+  </script>
 
   <footer class="site-footer">
     <div class="container">
