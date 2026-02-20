@@ -432,15 +432,6 @@
     gap: var(--space-xs);
   }
 
-  .site-footer__social-link {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-xs);
-    text-decoration: none;
-    font-size: var(--font-size-sm);
-    font-weight: 500;
-  }
-
   .site-footer__copy {
     font-size: var(--font-size-sm);
     color: color-mix(in oklch, var(--clr-charcoal), transparent 40%);
@@ -637,15 +628,6 @@
     object-fit: cover;
   }
 
-  .class-card__body {
-    padding: var(--space-lg);
-    padding-block-start: 0;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-sm);
-    flex: 1;
-  }
-
   /* Cards without images get padding on all sides */
   .class-card:not(:has(.class-card__image)) {
     padding: var(--space-lg);
@@ -654,6 +636,18 @@
   .class-card:has(.class-card__image) .class-card__day {
     padding-inline: var(--space-lg);
     padding-block-start: var(--space-md);
+  }
+
+  .class-card:has(.class-card__image) .class-card__name,
+  .class-card:has(.class-card__image) .class-card__detail,
+  .class-card:has(.class-card__image) .class-card__notes,
+  .class-card:has(.class-card__image) .class-card__price,
+  .class-card:has(.class-card__image) .class-card__cta {
+    padding-inline: var(--space-lg);
+  }
+
+  .class-card:has(.class-card__image) .class-card__cta {
+    margin-block-end: var(--space-lg);
   }
 
   .class-card:hover {
@@ -921,22 +915,11 @@
   }
 
   /* ---------- Contact ---------- */
-  .contact-layout {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-2xl);
-  }
-
-  @media (min-width: 768px) {
-    .contact-layout {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-
   .contact-info {
     display: flex;
     flex-direction: column;
     gap: var(--space-lg);
+    text-align: start;
   }
 
   .contact-info__item {
