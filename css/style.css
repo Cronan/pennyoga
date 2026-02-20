@@ -432,15 +432,6 @@
     gap: var(--space-xs);
   }
 
-  .site-footer__social-link {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-xs);
-    text-decoration: none;
-    font-size: var(--font-size-sm);
-    font-weight: 500;
-  }
-
   .site-footer__copy {
     font-size: var(--font-size-sm);
     color: color-mix(in oklch, var(--clr-charcoal), transparent 40%);
@@ -637,15 +628,6 @@
     object-fit: cover;
   }
 
-  .class-card__body {
-    padding: var(--space-lg);
-    padding-block-start: 0;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-sm);
-    flex: 1;
-  }
-
   /* Cards without images get padding on all sides */
   .class-card:not(:has(.class-card__image)) {
     padding: var(--space-lg);
@@ -654,6 +636,18 @@
   .class-card:has(.class-card__image) .class-card__day {
     padding-inline: var(--space-lg);
     padding-block-start: var(--space-md);
+  }
+
+  .class-card:has(.class-card__image) .class-card__name,
+  .class-card:has(.class-card__image) .class-card__detail,
+  .class-card:has(.class-card__image) .class-card__notes,
+  .class-card:has(.class-card__image) .class-card__price,
+  .class-card:has(.class-card__image) .class-card__cta {
+    padding-inline: var(--space-lg);
+  }
+
+  .class-card:has(.class-card__image) .class-card__cta {
+    margin-block-end: var(--space-lg);
   }
 
   .class-card:hover {
@@ -709,6 +703,91 @@
   }
 
   .class-card__cta {
+    margin-block-start: var(--space-sm);
+  }
+
+  .class-card__map {
+    border-radius: var(--radius);
+    border: 1px solid var(--clr-border);
+    margin-block-start: var(--space-xs);
+  }
+
+  .class-card__map iframe {
+    display: block;
+    inline-size: 100%;
+    block-size: 180px;
+    border: 0;
+    border-radius: var(--radius);
+  }
+
+  /* ---------- Testimonials ---------- */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  @media (min-width: 768px) {
+    .testimonials-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .testimonial {
+    background: var(--clr-white);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .testimonial__quote {
+    font-style: italic;
+    line-height: var(--line-height-normal);
+    color: var(--clr-charcoal);
+    flex: 1;
+  }
+
+  .testimonial__quote::before {
+    content: "\201C";
+    font-size: var(--font-size-2xl);
+    color: var(--clr-sage);
+    line-height: 0;
+    vertical-align: -0.3em;
+    margin-inline-end: 0.1em;
+  }
+
+  .testimonial__author {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--clr-sage);
+  }
+
+  /* ---------- Bottom CTA ---------- */
+  .cta-section {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .cta-section__heading {
+    font-size: var(--font-size-2xl);
+  }
+
+  .cta-section__text {
+    max-inline-size: 42ch;
+    color: color-mix(in oklch, var(--clr-charcoal), transparent 25%);
+  }
+
+  .cta-section__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-md);
     margin-block-start: var(--space-sm);
   }
 
@@ -824,7 +903,7 @@
 
   .bwy-logo {
     display: block;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius);
     width: 100px;
     height: auto;
   }
@@ -836,22 +915,11 @@
   }
 
   /* ---------- Contact ---------- */
-  .contact-layout {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-2xl);
-  }
-
-  @media (min-width: 768px) {
-    .contact-layout {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-
   .contact-info {
     display: flex;
     flex-direction: column;
     gap: var(--space-lg);
+    text-align: start;
   }
 
   .contact-info__item {
@@ -886,64 +954,9 @@
     }
   }
 
-  /* Form */
-  .contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-md);
-  }
-
-  .form-field {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-xs);
-  }
-
-  .form-field label {
-    font-weight: 500;
-    font-size: var(--font-size-sm);
-  }
-
-  .form-field input,
-  .form-field textarea {
-    padding: var(--space-sm) var(--space-md);
-    border: 1px solid var(--clr-border);
-    border-radius: var(--radius);
-    background: var(--clr-white);
-    color: var(--clr-charcoal);
-    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
-
-    &:focus {
-      outline: none;
-      border-color: var(--clr-teal);
-      box-shadow: 0 0 0 3px var(--clr-teal-light);
-    }
-
-    &::placeholder {
-      color: color-mix(in oklch, var(--clr-charcoal), transparent 60%);
-    }
-  }
-
-  .form-field textarea {
-    min-block-size: 150px;
-    resize: vertical;
-  }
-
-  .form-submit {
-    align-self: flex-start;
-  }
-
-  .form-privacy {
+  .contact-info__reassurance {
     font-size: var(--font-size-sm);
     color: color-mix(in oklch, var(--clr-charcoal), transparent 35%);
-  }
-
-  .form-success {
-    background: var(--clr-sage-light);
-    border: 1px solid var(--clr-sage);
-    border-radius: var(--radius-lg);
-    padding: var(--space-xl);
-    text-align: center;
   }
 
   /* ---------- Privacy Policy ---------- */
@@ -998,6 +1011,47 @@
 
   .text-center {
     text-align: center;
+  }
+
+  /* Back to top button */
+  .back-to-top {
+    position: fixed;
+    inset-block-end: var(--space-lg);
+    inset-inline-end: var(--space-lg);
+    inline-size: 44px;
+    block-size: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--clr-border);
+    background-color: var(--clr-white);
+    color: var(--clr-sage);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-md);
+    transition:
+      opacity var(--transition-base),
+      transform var(--transition-base),
+      background-color var(--transition-fast);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 50;
+  }
+
+  .back-to-top[data-visible="true"] {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .back-to-top:hover {
+    background-color: var(--clr-sage);
+    color: var(--clr-white);
+    transform: translateY(-2px);
+  }
+
+  .back-to-top:focus-visible {
+    outline: 2px solid var(--clr-teal);
+    outline-offset: 2px;
   }
 }
 
