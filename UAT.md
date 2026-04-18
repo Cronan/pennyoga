@@ -141,6 +141,38 @@ Once collected, uncomment the `<section>` in `index.html` and replace the placeh
 
 ---
 
+## Phase 4 — polish (image formats, about page, 404, sitemap)
+
+### Visual
+- [ ] All photos now serve AVIF where supported, WebP as fallback, JPEG as final fallback — no visible difference but check via DevTools Network tab (should see `.avif` or `.webp` requested, not `.jpg`)
+- [ ] Hero image (canal) still renders with the correct aspect ratio and crispness
+- [ ] About page: new eyebrow "HELLO, I'M PENNY" above the H1
+- [ ] About page H1 changed to "Gentle yoga, taught with care since 2004"
+- [ ] About page portrait: bigger (no 280px cap), with a soft sage-teal gradient panel peeking out bottom-left behind the photo
+- [ ] About page pull-quote "A sense of equilibrium and equanimity" now renders in Fraunces italic, larger
+- [ ] 404 page renders at `/404.html` with header, nav, big soft-sage "404" eyebrow, friendly heading, and three buttons (Home / See classes / Contact)
+- [ ] 404 page responds when visiting a bogus URL on pennyoga.co.uk (GitHub Pages uses `/404.html` automatically on custom domains)
+- [ ] `sitemap.xml` reachable at `pennyoga.co.uk/sitemap.xml`, validates as XML
+
+### Performance savings (Network tab)
+- canal: 252KB JPG → 118KB AVIF (53% smaller)
+- penny: 269KB JPG → 54KB AVIF (80% smaller)
+- court-house-card: 87KB → 49KB AVIF
+- leverstock-green-card: 88KB → 51KB AVIF
+- carey-baptist-card: 89KB → 40KB WebP / 65KB AVIF (WebP wins here; modern browsers pick AVIF anyway, minor)
+- pablo-on-mat: 42KB → 11KB AVIF
+
+### Language queries for Penny
+- [ ] **About H1 change**: "About Penny Cronyn" → "Gentle yoga, taught with care since 2004" — keeps Penny's identity in the eyebrow but makes the H1 work harder for SEO and framing. OK or revert to the name-based heading?
+- [ ] **About eyebrow**: "HELLO, I'M PENNY" — friendly and first-person. Voice check?
+- [ ] **404 copy**: "This page has wandered off" / "The page you were looking for isn't here. Perhaps the link is old, or it never quite existed. Try one of these instead:" — OK or would Penny prefer softer / more direct?
+
+### Compatibility
+- [ ] `<picture>` + AVIF — Chrome 85+, Safari 16.4+, Firefox 93+; universal fallback to JPG for anything older
+- [ ] `isolation: isolate` on the about portrait — Safari 16.4+, universal elsewhere; without it the decorative gradient may sit at a weird layer on old Safari but won't break layout
+
+---
+
 ## Cross-phase
 - [ ] Lighthouse mobile run: Performance target 95+, Accessibility 100, Best Practices 100, SEO 100
 - [ ] WebPageTest or Chrome perf panel: LCP < 2.0s on throttled 4G
