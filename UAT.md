@@ -91,6 +91,56 @@ _(none)_
 
 ---
 
+## Phase 3 — class cards, "Your first class", FAQ disclosure
+
+### Visual
+- [ ] Wednesday online card now has the `pablo-on-mat.jpg` image (ties neatly to the "dogs and cats optional" line in the notes)
+- [ ] All 4 class cards now have consistent image + content layout
+- [ ] Class schedule subheading mentions trial availability
+- [ ] "Your first class" section renders between the class grid and the FAQ
+- [ ] Four reassurance items with sage circular icon + heading + short paragraph; 2-column grid on tablet+, single column on mobile
+- [ ] Cream (alt) background on "Your first class" gives it a warm, reassuring feel — sits well between the plain class grid and the plain FAQ
+- [ ] FAQ items now render as collapsed `<details>` cards (chevron visible on the right, hidden default triangle)
+- [ ] Clicking a question expands it; chevron rotates 180deg
+- [ ] Multiple questions can be open at once
+- [ ] Open item shows a subtle shadow to indicate state
+- [ ] Hover on the question shows a soft sage tint
+
+### Interaction
+- [ ] `<details>`/`<summary>` keyboard works (Tab + Enter/Space)
+- [ ] Screen reader announces "expanded"/"collapsed" state
+- [ ] JSON-LD `FAQPage` schema still serializes correctly (view-source check)
+
+### Language queries for Penny
+- [ ] **"Your first class" section copy**: voice check on the four reassurances
+  - "Arrive a few minutes early — Settle in with your mat and meet the group at your own pace. No need to introduce yourself if you'd rather not."
+  - "Wear whatever feels comfortable — No special yoga kit is needed. Loose, comfortable clothes you can move in are perfect. Bare feet or socks, whichever you prefer."
+  - "Modifications for every movement — If a pose doesn't suit your body today, I'll offer an alternative. You'll always work within your own range of movement."
+  - "We end with a proper rest — Every class finishes with a guided relaxation, usually ten to fifteen minutes. Bring a blanket if you have one — you'll want it."
+- [ ] **Classes subheading**: "Weekly classes in Berkhamsted and Hemel Hempstead, plus a Wednesday evening session online. New here? You're welcome to start with a one-off trial before committing to a block booking." — OK or tighten?
+- [ ] **Pablo-on-mat image** on the Wednesday online card — OK, or prefer something more generic/professional for online?
+
+### Compatibility
+- [ ] `<details>`/`<summary>` — universal support, no fallback needed
+- [ ] `::marker` content override for Firefox — check triangle is hidden
+- [ ] SVG mask chevron — Safari 14+, Chrome 84+, FF 53+; if unsupported the chevron simply won't show (content is still clickable via the entire summary)
+
+## Testimonials — collection checklist for Penny
+
+The testimonials block is designed and styled but still commented out in `index.html` (look for `TODO: Add real testimonials`). To activate it, Penny needs to collect real quotes.
+
+For each testimonial, collect:
+- [ ] First name only, or initial + location ("Sarah B, Berkhamsted" / "Long-term student, Hemel") — GDPR-safe
+- [ ] One or two sentences, Penny's choice of phrasing-as-is or lightly tidied
+- [ ] Approximate duration as a student ("since 2018" / "joined last year")
+- [ ] **Explicit written consent** to use their words publicly on `pennyoga.co.uk`
+- [ ] Mix of voices: at least one in-person, one online, one beginner/returner
+
+Aim for 3 quotes minimum (the design assumes 3 in a row on desktop).
+Once collected, uncomment the `<section>` in `index.html` and replace the placeholder quotes.
+
+---
+
 ## Cross-phase
 - [ ] Lighthouse mobile run: Performance target 95+, Accessibility 100, Best Practices 100, SEO 100
 - [ ] WebPageTest or Chrome perf panel: LCP < 2.0s on throttled 4G
