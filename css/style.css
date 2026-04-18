@@ -779,14 +779,74 @@
     border-radius: var(--radius);
     border: 1px solid var(--clr-border);
     margin-block-start: var(--space-xs);
+    overflow: hidden;
   }
 
-  .class-card__map iframe {
+  .class-card__map iframe,
+  .class-card__map-iframe {
     display: block;
     inline-size: 100%;
     block-size: 180px;
     border: 0;
-    border-radius: var(--radius);
+  }
+
+  /* Map facade - click-to-load placeholder avoids third-party map traffic on page load */
+  .map-facade {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs);
+    inline-size: 100%;
+    block-size: 180px;
+    padding: var(--space-md);
+    border: 0;
+    background:
+      radial-gradient(circle at 30% 20%, color-mix(in oklch, var(--clr-sage), transparent 70%), transparent 55%),
+      radial-gradient(circle at 80% 75%, color-mix(in oklch, var(--clr-teal), transparent 75%), transparent 60%),
+      linear-gradient(135deg, var(--clr-sage-light), var(--clr-cream-deep));
+    color: var(--clr-sage-deep);
+    font: inherit;
+    cursor: pointer;
+    text-align: center;
+    transition:
+      background-color var(--transition-base),
+      transform var(--transition-fast);
+  }
+
+  .map-facade:hover {
+    transform: scale(1.005);
+  }
+
+  .map-facade:focus-visible {
+    outline: 2px solid var(--clr-teal);
+    outline-offset: -2px;
+  }
+
+  .map-facade__pin {
+    inline-size: 28px;
+    block-size: 28px;
+    color: var(--clr-earth);
+    filter: drop-shadow(0 1px 2px color-mix(in oklch, var(--clr-charcoal), transparent 80%));
+  }
+
+  .map-facade__name {
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+    color: var(--clr-sage-deep);
+    max-inline-size: 22ch;
+    text-wrap: balance;
+  }
+
+  .map-facade__cta {
+    font-size: var(--font-size-xs);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-eyebrow);
+    color: var(--clr-muted);
+    padding: var(--space-2xs) var(--space-sm);
+    border: 1px solid var(--clr-border);
+    border-radius: 999px;
+    background: color-mix(in oklch, var(--clr-surface), transparent 30%);
   }
 
   /* ---------- Testimonials ---------- */

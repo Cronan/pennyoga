@@ -247,7 +247,11 @@
         </p>
         <p class="class-card__notes">Church Lane, Berkhamsted, HP4 2AX. A short walk from Berkhamsted High Street and the castle.</p>
         <div class="class-card__map">
-          <iframe src="https://maps.google.com/maps?q=The+Court+House,+Church+Lane,+Berkhamsted+HP4+2AX&output=embed" title="Map: The Court House, Berkhamsted" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+          <button type="button" class="map-facade" data-map-q="The+Court+House,+Church+Lane,+Berkhamsted+HP4+2AX" aria-label="Show map for The Court House, Berkhamsted">
+            <svg class="map-facade__pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span class="map-facade__name">The Court House, Berkhamsted</span>
+            <span class="map-facade__cta">Show map</span>
+          </button>
         </div>
         <p class="class-card__price">£12 <span>per session</span></p>
         <a href="mailto:penny.cronyn@gmail.com?subject=Pennyoga%20Website%20-%20Booking%20Enquiry%20-%20Monday%20Berkhamsted" class="btn btn--secondary class-card__cta">Book this Class</a>
@@ -267,7 +271,11 @@
         </p>
         <p class="class-card__notes">Two classes available. Leverstock Green, Hemel Hempstead, HP3 8QG. On the green, with free parking nearby.</p>
         <div class="class-card__map">
-          <iframe src="https://maps.google.com/maps?q=Leverstock+Green+Village+Hall,+Hemel+Hempstead+HP3+8QG&output=embed" title="Map: Leverstock Green Village Hall" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+          <button type="button" class="map-facade" data-map-q="Leverstock+Green+Village+Hall,+Hemel+Hempstead+HP3+8QG" aria-label="Show map for Leverstock Green Village Hall">
+            <svg class="map-facade__pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span class="map-facade__name">Leverstock Green Village Hall</span>
+            <span class="map-facade__cta">Show map</span>
+          </button>
         </div>
         <p class="class-card__price">£10 <span>per session</span></p>
         <a href="mailto:penny.cronyn@gmail.com?subject=Pennyoga%20Website%20-%20Booking%20Enquiry%20-%20Tuesday%20Hemel%20Hempstead" class="btn btn--secondary class-card__cta">Book this Class</a>
@@ -287,7 +295,11 @@
         </p>
         <p class="class-card__notes">Marlowes, Hemel Hempstead, HP1 1LD. In the town centre, close to the Marlowes Shopping Centre.</p>
         <div class="class-card__map">
-          <iframe src="https://maps.google.com/maps?q=Carey+Baptist+Church,+Marlowes,+Hemel+Hempstead+HP1+1LD&output=embed" title="Map: Carey Baptist Church, Hemel Hempstead" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+          <button type="button" class="map-facade" data-map-q="Carey+Baptist+Church,+Marlowes,+Hemel+Hempstead+HP1+1LD" aria-label="Show map for Carey Baptist Church, Hemel Hempstead">
+            <svg class="map-facade__pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span class="map-facade__name">Carey Baptist Church, Hemel Hempstead</span>
+            <span class="map-facade__cta">Show map</span>
+          </button>
         </div>
         <p class="class-card__price">£10 <span>per session</span></p>
         <a href="mailto:penny.cronyn@gmail.com?subject=Pennyoga%20Website%20-%20Booking%20Enquiry%20-%20Thursday%20Hemel%20Hempstead" class="btn btn--secondary class-card__cta">Book this Class</a>
@@ -392,17 +404,7 @@
   <button class="back-to-top" data-visible="false" aria-label="Back to top">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
   </button>
-  <script>
-    (function() {
-      var btn = document.querySelector('.back-to-top');
-      window.addEventListener('scroll', function() {
-        btn.setAttribute('data-visible', window.scrollY > 300 ? 'true' : 'false');
-      });
-      btn.addEventListener('click', function() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-    })();
-  </script>
+  <script src="js/site.js" defer></script>
 
   <footer class="site-footer">
     <div class="container">
