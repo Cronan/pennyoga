@@ -13,6 +13,7 @@
   <meta property="og:image" content="https://pennyoga.co.uk/images/canal.jpg">
   <meta property="og:locale" content="en_GB">
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="fonts/fraunces-variable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/style.css">
   <script type="application/ld+json">
   {
@@ -213,15 +214,51 @@
 <section class="hero">
   <div class="container hero__inner">
     <div class="hero__content">
-      <h1 class="hero__heading">Gentle Yoga Classes in Berkhamsted &amp; Hemel Hempstead</h1>
+      <p class="hero__eyebrow">BWY qualified &middot; Since 2004</p>
+      <h1 class="hero__heading">Gentle Yoga in Berkhamsted &amp; Hemel Hempstead</h1>
       <p class="hero__subheading">Friendly, nurturing sessions face-to-face and online</p>
       <p class="hero__text">I qualified as a British Wheel of Yoga teacher in 2004, and was a yoga student for ten years before that. I've been running my friendly, nurturing and relaxed classes in Berkhamsted and Hemel Hempstead since then.</p>
-      <div class="hero__actions">
-        <a href="mailto:penny.cronyn@gmail.com?subject=Pennyoga%20Website%20-%20Class%20Enquiry" class="btn btn--primary">Get in Touch</a>
-        <a href="#classes" class="btn btn--secondary">View Classes</a>
+
+      <div class="next-class" data-next-class hidden>
+        <span class="next-class__dot" aria-hidden="true"></span>
+        <span class="next-class__label" data-next-class-label>Next class</span>
+        <span class="next-class__time" data-next-class-time></span>
+        <span class="next-class__separator" aria-hidden="true">&middot;</span>
+        <span class="next-class__where" data-next-class-where></span>
       </div>
+
+      <div class="hero__actions">
+        <a href="mailto:penny.cronyn@gmail.com?subject=Pennyoga%20Website%20-%20Trial%20Class%20Booking&amp;body=Hi%20Penny%2C%0A%0AI%27d%20like%20to%20book%20a%20trial%20class.%20Could%20you%20let%20me%20know%20what%27s%20available%3F%0A%0AThanks" class="btn btn--primary">Book a trial class</a>
+        <a href="tel:+447958616470" class="btn btn--secondary">Call 07958 616470</a>
+      </div>
+
+      <ul class="trust-strip" role="list">
+        <li class="trust-strip__item">
+          <svg class="trust-strip__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          <span>BWY qualified since 2004</span>
+        </li>
+        <li class="trust-strip__item">
+          <svg class="trust-strip__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>20+ years teaching</span>
+        </li>
+        <li class="trust-strip__item">
+          <svg class="trust-strip__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-12V5l-8-3-8 3v5c0 8 8 12 8 12z"/></svg>
+          <span>Fully insured</span>
+        </li>
+        <li class="trust-strip__item">
+          <svg class="trust-strip__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 9h-5V4h-6v5H4v6h5v5h6v-5h5z"/></svg>
+          <span>First aid certified</span>
+        </li>
+      </ul>
     </div>
-    <img src="images/canal.jpg" alt="Grand Union Canal in Berkhamsted, Hertfordshire with narrowboats moored along the towpath" class="hero__image" width="940" height="440">
+
+    <div class="hero__visual">
+      <picture>
+        <source srcset="images/canal.avif" type="image/avif">
+        <source srcset="images/canal.webp" type="image/webp">
+        <img src="images/canal.jpg" alt="Grand Union Canal in Berkhamsted, Hertfordshire with narrowboats moored along the towpath" class="hero__image" width="940" height="440" fetchpriority="high">
+      </picture>
+    </div>
   </div>
 </section>
 
@@ -229,11 +266,15 @@
 <section id="classes" class="section">
   <div class="container">
     <h2 class="section__heading">Gentle Yoga Classes</h2>
-    <p class="section__subheading">Classes running weekly in Hemel Hempstead and Berkhamsted</p>
+    <p class="section__subheading">Weekly classes in Berkhamsted and Hemel Hempstead, plus a Wednesday evening session online. New here? You're welcome to start with a one-off trial before committing to a block booking.</p>
     <div class="class-grid">
       
       <article class="class-card fade-in">
-        <img src="images/court-house-card.jpg" alt="The Court House in Berkhamsted, venue for Monday gentle yoga classes" class="class-card__image" width="400" height="200" loading="lazy">
+        <picture>
+          <source srcset="images/court-house-card.avif" type="image/avif">
+          <source srcset="images/court-house-card.webp" type="image/webp">
+          <img src="images/court-house-card.jpg" alt="The Court House in Berkhamsted, venue for Monday gentle yoga classes" class="class-card__image" width="400" height="200" loading="lazy">
+        </picture>
         <p class="class-card__day">Monday</p>
         <h3 class="class-card__name">Mondays in Berkhamsted</h3>
         <p class="class-card__detail">
@@ -246,14 +287,22 @@
         </p>
         <p class="class-card__notes">Church Lane, Berkhamsted, HP4 2AX. A short walk from Berkhamsted High Street and the castle.</p>
         <div class="class-card__map">
-          <iframe src="https://maps.google.com/maps?q=The+Court+House,+Church+Lane,+Berkhamsted+HP4+2AX&output=embed" title="Map: The Court House, Berkhamsted" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+          <button type="button" class="map-facade" data-map-q="The+Court+House,+Church+Lane,+Berkhamsted+HP4+2AX" aria-label="Show map for The Court House, Berkhamsted">
+            <svg class="map-facade__pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span class="map-facade__name">The Court House, Berkhamsted</span>
+            <span class="map-facade__cta">Show map</span>
+          </button>
         </div>
         <p class="class-card__price">£12 <span>per session</span></p>
         <a href="mailto:penny.cronyn@gmail.com?subject=Pennyoga%20Website%20-%20Booking%20Enquiry%20-%20Monday%20Berkhamsted" class="btn btn--secondary class-card__cta">Book this Class</a>
       </article>
 
       <article class="class-card fade-in">
-        <img src="images/leverstock-green-card.jpg" alt="Leverstock Green Village Hall in Hemel Hempstead, venue for Tuesday gentle yoga classes" class="class-card__image" width="400" height="200" loading="lazy">
+        <picture>
+          <source srcset="images/leverstock-green-card.avif" type="image/avif">
+          <source srcset="images/leverstock-green-card.webp" type="image/webp">
+          <img src="images/leverstock-green-card.jpg" alt="Leverstock Green Village Hall in Hemel Hempstead, venue for Tuesday gentle yoga classes" class="class-card__image" width="400" height="200" loading="lazy">
+        </picture>
         <p class="class-card__day">Tuesday</p>
         <h3 class="class-card__name">Tuesdays in Hemel Hempstead</h3>
         <p class="class-card__detail">
@@ -266,14 +315,22 @@
         </p>
         <p class="class-card__notes">Two classes available. Leverstock Green, Hemel Hempstead, HP3 8QG. On the green, with free parking nearby.</p>
         <div class="class-card__map">
-          <iframe src="https://maps.google.com/maps?q=Leverstock+Green+Village+Hall,+Hemel+Hempstead+HP3+8QG&output=embed" title="Map: Leverstock Green Village Hall" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+          <button type="button" class="map-facade" data-map-q="Leverstock+Green+Village+Hall,+Hemel+Hempstead+HP3+8QG" aria-label="Show map for Leverstock Green Village Hall">
+            <svg class="map-facade__pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span class="map-facade__name">Leverstock Green Village Hall</span>
+            <span class="map-facade__cta">Show map</span>
+          </button>
         </div>
         <p class="class-card__price">£10 <span>per session</span></p>
         <a href="mailto:penny.cronyn@gmail.com?subject=Pennyoga%20Website%20-%20Booking%20Enquiry%20-%20Tuesday%20Hemel%20Hempstead" class="btn btn--secondary class-card__cta">Book this Class</a>
       </article>
 
       <article class="class-card fade-in">
-        <img src="images/carey-baptist-card.jpg" alt="Carey Baptist Church in Hemel Hempstead, venue for Thursday gentle yoga classes" class="class-card__image" width="400" height="200" loading="lazy">
+        <picture>
+          <source srcset="images/carey-baptist-card.avif" type="image/avif">
+          <source srcset="images/carey-baptist-card.webp" type="image/webp">
+          <img src="images/carey-baptist-card.jpg" alt="Carey Baptist Church in Hemel Hempstead, venue for Thursday gentle yoga classes" class="class-card__image" width="400" height="200" loading="lazy">
+        </picture>
         <p class="class-card__day">Thursday</p>
         <h3 class="class-card__name">Thursdays in Hemel Hempstead</h3>
         <p class="class-card__detail">
@@ -286,14 +343,22 @@
         </p>
         <p class="class-card__notes">Marlowes, Hemel Hempstead, HP1 1LD. In the town centre, close to the Marlowes Shopping Centre.</p>
         <div class="class-card__map">
-          <iframe src="https://maps.google.com/maps?q=Carey+Baptist+Church,+Marlowes,+Hemel+Hempstead+HP1+1LD&output=embed" title="Map: Carey Baptist Church, Hemel Hempstead" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+          <button type="button" class="map-facade" data-map-q="Carey+Baptist+Church,+Marlowes,+Hemel+Hempstead+HP1+1LD" aria-label="Show map for Carey Baptist Church, Hemel Hempstead">
+            <svg class="map-facade__pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span class="map-facade__name">Carey Baptist Church, Hemel Hempstead</span>
+            <span class="map-facade__cta">Show map</span>
+          </button>
         </div>
         <p class="class-card__price">£10 <span>per session</span></p>
         <a href="mailto:penny.cronyn@gmail.com?subject=Pennyoga%20Website%20-%20Booking%20Enquiry%20-%20Thursday%20Hemel%20Hempstead" class="btn btn--secondary class-card__cta">Book this Class</a>
       </article>
 
       <article class="class-card fade-in">
-
+        <picture>
+          <source srcset="images/pablo-on-mat.avif" type="image/avif">
+          <source srcset="images/pablo-on-mat.webp" type="image/webp">
+          <img src="images/pablo-on-mat.jpg" alt="Pablo the family dog relaxing on a yoga mat at home during an online class" class="class-card__image" width="400" height="200" loading="lazy">
+        </picture>
         <p class="class-card__day">Wednesday</p>
         <h3 class="class-card__name">Wednesday Online Class</h3>
         <p class="class-card__detail">
@@ -309,6 +374,44 @@
         <a href="mailto:penny.cronyn@gmail.com?subject=Pennyoga%20Website%20-%20Booking%20Enquiry%20-%20Wednesday%20Online%20Class" class="btn btn--secondary class-card__cta">Book this Class</a>
       </article>
     </div>
+  </div>
+</section>
+
+<!-- Your first class -->
+<section class="section section--alt">
+  <div class="container container--narrow">
+    <h2 class="section__heading">Your first class</h2>
+    <p class="section__subheading">What happens when you join a gentle yoga session with me</p>
+    <ul class="first-class" role="list">
+      <li class="first-class__item fade-in">
+        <svg class="first-class__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <div>
+          <h3 class="first-class__heading">Arrive a few minutes early</h3>
+          <p class="first-class__text">Settle in with your mat and meet the group at your own pace. No need to introduce yourself if you&rsquo;d rather not.</p>
+        </div>
+      </li>
+      <li class="first-class__item fade-in">
+        <svg class="first-class__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23Z"/></svg>
+        <div>
+          <h3 class="first-class__heading">Wear whatever feels comfortable</h3>
+          <p class="first-class__text">No special yoga kit is needed. Loose, comfortable clothes you can move in are perfect. Bare feet or socks, whichever you prefer.</p>
+        </div>
+      </li>
+      <li class="first-class__item fade-in">
+        <svg class="first-class__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg>
+        <div>
+          <h3 class="first-class__heading">Modifications for every movement</h3>
+          <p class="first-class__text">If a pose doesn&rsquo;t suit your body today, I&rsquo;ll offer an alternative. You&rsquo;ll always work within your own range of movement.</p>
+        </div>
+      </li>
+      <li class="first-class__item fade-in">
+        <svg class="first-class__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <div>
+          <h3 class="first-class__heading">We end with a proper rest</h3>
+          <p class="first-class__text">Every class finishes with a guided relaxation, usually ten to fifteen minutes. Bring a blanket if you have one &mdash; you&rsquo;ll want it.</p>
+        </div>
+      </li>
+    </ul>
   </div>
 </section>
 
@@ -336,39 +439,39 @@
 -->
 
 <!-- FAQ -->
-<section class="section section--alt">
+<section class="section">
   <div class="container container--narrow">
     <h2 class="section__heading">Common Questions</h2>
-    <dl class="faq">
-      <div class="faq__item fade-in">
-        <dt class="faq__question">Are the classes suitable for beginners or people with limited mobility?</dt>
-        <dd class="faq__answer">Absolutely. My gentle yoga classes are designed for all levels, including complete beginners and those with reduced mobility. Whether you are managing arthritis, recovering from an injury, or simply feeling stiff, I offer modifications throughout so everyone can work within their own comfortable range of movement.</dd>
-      </div>
-      <div class="faq__item fade-in">
-        <dt class="faq__question">What should I expect at a gentle yoga class in Berkhamsted or Hemel Hempstead?</dt>
-        <dd class="faq__answer">Each session is 75 minutes of gentle Hatha Yoga, combining breathwork, simple postures, and relaxation. The atmosphere is friendly and unhurried. Just bring a mat if you have one, wear comfortable clothing, and arrive a few minutes early.</dd>
-      </div>
-      <div class="faq__item fade-in">
-        <dt class="faq__question">Do I need to book in advance?</dt>
-        <dd class="faq__answer">Yes. Face-to-face classes run as a block booking. If you are new, I offer a one-off trial session so you can try a class before committing to a block. Get in touch to arrange your trial.</dd>
-      </div>
-      <div class="faq__item fade-in">
-        <dt class="faq__question">What qualifications does Penny have?</dt>
-        <dd class="faq__answer">I qualified as a British Wheel of Yoga (BWY) teacher in 2004, after ten years as a yoga student. BWY teacher training takes two to three years and is a nationally recognised qualification. I hold current first aid certification and undertake annual professional development.</dd>
-      </div>
-      <div class="faq__item fade-in">
-        <dt class="faq__question">How much do classes cost?</dt>
-        <dd class="faq__answer">Face-to-face classes are &pound;10&ndash;&pound;12 per session depending on the venue and are booked as a block. The Wednesday online class via Zoom is &pound;9 per session.</dd>
-      </div>
-      <div class="faq__item fade-in">
-        <dt class="faq__question">What do I need to bring to a face-to-face class?</dt>
-        <dd class="faq__answer">Please bring your own yoga mat and wear loose, comfortable clothing that lets you move freely. A blanket is useful for the relaxation at the end of the session. Blocks and straps can be helpful but are not essential, especially for your first few classes.</dd>
-      </div>
-      <div class="faq__item fade-in">
-        <dt class="faq__question">How do the online Wednesday classes work?</dt>
-        <dd class="faq__answer">The Wednesday evening class is a live, interactive session held via Zoom. Once you book, I will send you the link to join. You practise from home on your own mat and I give guidance throughout, just as in a face-to-face class. You will need the Zoom app installed on your device before your first session.</dd>
-      </div>
-    </dl>
+    <div class="faq">
+      <details class="faq__item fade-in">
+        <summary class="faq__question">Are the classes suitable for beginners or people with limited mobility?</summary>
+        <div class="faq__answer">Absolutely. My gentle yoga classes are designed for all levels, including complete beginners and those with reduced mobility. Whether you are managing arthritis, recovering from an injury, or simply feeling stiff, I offer modifications throughout so everyone can work within their own comfortable range of movement.</div>
+      </details>
+      <details class="faq__item fade-in">
+        <summary class="faq__question">What should I expect at a gentle yoga class in Berkhamsted or Hemel Hempstead?</summary>
+        <div class="faq__answer">Each session is 75 minutes of gentle Hatha Yoga, combining breathwork, simple postures, and relaxation. The atmosphere is friendly and unhurried. Just bring a mat if you have one, wear comfortable clothing, and arrive a few minutes early.</div>
+      </details>
+      <details class="faq__item fade-in">
+        <summary class="faq__question">Do I need to book in advance?</summary>
+        <div class="faq__answer">Yes. Face-to-face classes run as a block booking. If you are new, I offer a one-off trial session so you can try a class before committing to a block. Get in touch to arrange your trial.</div>
+      </details>
+      <details class="faq__item fade-in">
+        <summary class="faq__question">What qualifications does Penny have?</summary>
+        <div class="faq__answer">I qualified as a British Wheel of Yoga (BWY) teacher in 2004, after ten years as a yoga student. BWY teacher training takes two to three years and is a nationally recognised qualification. I hold current first aid certification and undertake annual professional development.</div>
+      </details>
+      <details class="faq__item fade-in">
+        <summary class="faq__question">How much do classes cost?</summary>
+        <div class="faq__answer">Face-to-face classes are &pound;10&ndash;&pound;12 per session depending on the venue and are booked as a block. The Wednesday online class via Zoom is &pound;9 per session.</div>
+      </details>
+      <details class="faq__item fade-in">
+        <summary class="faq__question">What do I need to bring to a face-to-face class?</summary>
+        <div class="faq__answer">Please bring your own yoga mat and wear loose, comfortable clothing that lets you move freely. A blanket is useful for the relaxation at the end of the session. Blocks and straps can be helpful but are not essential, especially for your first few classes.</div>
+      </details>
+      <details class="faq__item fade-in">
+        <summary class="faq__question">How do the online Wednesday classes work?</summary>
+        <div class="faq__answer">The Wednesday evening class is a live, interactive session held via Zoom. Once you book, I will send you the link to join. You practise from home on your own mat and I give guidance throughout, just as in a face-to-face class. You will need the Zoom app installed on your device before your first session.</div>
+      </details>
+    </div>
   </div>
 </section>
 
@@ -388,20 +491,21 @@
 
   </main>
 
+  <div class="sticky-cta" data-visible="false" aria-label="Quick contact">
+    <a href="mailto:penny.cronyn@gmail.com?subject=Pennyoga%20Website%20-%20Trial%20Class%20Booking" class="sticky-cta__btn sticky-cta__btn--primary">
+      <svg class="sticky-cta__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      <span>Book a trial</span>
+    </a>
+    <a href="tel:+447958616470" class="sticky-cta__btn sticky-cta__btn--secondary">
+      <svg class="sticky-cta__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span>Call</span>
+    </a>
+  </div>
+
   <button class="back-to-top" data-visible="false" aria-label="Back to top">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
   </button>
-  <script>
-    (function() {
-      var btn = document.querySelector('.back-to-top');
-      window.addEventListener('scroll', function() {
-        btn.setAttribute('data-visible', window.scrollY > 300 ? 'true' : 'false');
-      });
-      btn.addEventListener('click', function() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-    })();
-  </script>
+  <script src="js/site.js" defer></script>
 
   <footer class="site-footer">
     <div class="container">
