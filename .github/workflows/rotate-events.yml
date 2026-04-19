@@ -1,0 +1,36 @@
+name: Rotate event dates
+
+on:
+  schedule:
+    # Every day at 03:15 UTC (~04:15 BST). Cron uses UTC.
+    - cron: '15 3 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  rotate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Rotate Event startDate/endDate to next occurrence
+        run: python .github/scripts/rotate_event_dates.py
+
+      - name: Commit and push if changed
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git config user.name  "pennyoga-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git commit -m "chore: rotate event dates to next occurrence"
+          git push
