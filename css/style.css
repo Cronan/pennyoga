@@ -1566,7 +1566,7 @@
    Scroll-driven animations (progressive enhancement)
    ============================================================ */
 @supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
+  @media (prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine) {
     .fade-in {
       animation: fade-in-up linear both;
       animation-timeline: view();
@@ -1586,10 +1586,17 @@
   }
 }
 
-/* Fallback: elements are visible if scroll animations aren't supported */
-@supports not (animation-timeline: view()) {
-  .fade-in {
-    opacity: 1;
+/* Fallback: elements are visible if scroll animations aren't supported
+   or on touch devices where the effect is disabled for performance */
+.fade-in {
+  opacity: 1;
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine) {
+    .fade-in {
+      opacity: 0;
+    }
   }
 }
 
