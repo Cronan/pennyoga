@@ -6,50 +6,96 @@
   <title>Gentle Yoga With Penny - Classes in Berkhamsted &amp; Hemel Hempstead</title>
   <meta name="description" content="Friendly, gentle yoga classes in Berkhamsted and Hemel Hempstead with BWY-qualified teacher Penny Cronyn. Weekly face-to-face and online sessions since 2004.">
   <link rel="canonical" href="https://pennyoga.co.uk/">
+  <meta name="theme-color" content="#7C9082">
   <meta property="og:title" content="Gentle Yoga With Penny - Classes in Berkhamsted & Hemel Hempstead">
   <meta property="og:description" content="Friendly, gentle yoga classes in Berkhamsted and Hemel Hempstead with BWY-qualified teacher Penny Cronyn. Weekly face-to-face and online sessions since 2004.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://pennyoga.co.uk/">
+  <meta property="og:site_name" content="Gentle Yoga With Penny">
   <meta property="og:image" content="https://pennyoga.co.uk/images/canal.jpg">
+  <meta property="og:image:width" content="940">
+  <meta property="og:image:height" content="440">
+  <meta property="og:image:alt" content="Grand Union Canal in Berkhamsted, Hertfordshire">
   <meta property="og:locale" content="en_GB">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Gentle Yoga With Penny - Berkhamsted & Hemel Hempstead">
+  <meta name="twitter:description" content="Friendly, gentle yoga classes in Berkhamsted and Hemel Hempstead with BWY-qualified teacher Penny Cronyn since 2004.">
+  <meta name="twitter:image" content="https://pennyoga.co.uk/images/canal.jpg">
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="images/favicon.svg">
   <link rel="preload" href="fonts/fraunces-variable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/style.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "SportsActivityLocation",
+    "@type": ["LocalBusiness", "SportsActivityLocation"],
+    "@id": "https://pennyoga.co.uk/#business",
     "name": "Gentle Yoga With Penny",
     "description": "Gentle yoga classes in Berkhamsted and Hemel Hempstead, taught by BWY-qualified teacher Penny Cronyn since 2004.",
     "url": "https://pennyoga.co.uk/",
     "telephone": "+447958616470",
     "email": "penny.cronyn@gmail.com",
-    "priceRange": "£9-£12",
+    "image": "https://pennyoga.co.uk/images/canal.jpg",
+    "priceRange": "££",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Church Lane",
+      "addressLocality": "Berkhamsted",
+      "addressRegion": "Hertfordshire",
+      "postalCode": "HP4 2AX",
+      "addressCountry": "GB"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 51.7611,
+      "longitude": -0.5602
+    },
     "areaServed": [
       { "@type": "City", "name": "Berkhamsted", "containedInPlace": { "@type": "AdministrativeArea", "name": "Hertfordshire" } },
-      { "@type": "City", "name": "Hemel Hempstead", "containedInPlace": { "@type": "AdministrativeArea", "name": "Hertfordshire" } }
+      { "@type": "City", "name": "Hemel Hempstead", "containedInPlace": { "@type": "AdministrativeArea", "name": "Hertfordshire" } },
+      { "@type": "Country", "name": "United Kingdom" }
+    ],
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Monday",    "opens": "19:45", "closes": "21:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Tuesday",   "opens": "12:30", "closes": "15:15" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Wednesday", "opens": "19:00", "closes": "20:15" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Thursday",  "opens": "14:00", "closes": "15:15" }
     ],
     "founder": {
       "@type": "Person",
+      "@id": "https://pennyoga.co.uk/about.html#penny",
       "name": "Penny Cronyn",
       "jobTitle": "Yoga Teacher",
       "hasCredential": {
         "@type": "EducationalOccupationalCredential",
         "credentialCategory": "Professional certification",
-        "name": "British Wheel of Yoga Teacher"
+        "name": "British Wheel of Yoga Teacher",
+        "recognizedBy": { "@type": "Organization", "name": "British Wheel of Yoga", "url": "https://www.bwy.org.uk/" }
       }
     },
+    "sameAs": [
+      "https://www.bwy.org.uk/"
+    ],
     "event": [
       {
         "@type": "Event",
         "name": "Monday Gentle Yoga - Berkhamsted",
+        "url": "https://pennyoga.co.uk/classes/berkhamsted/",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
         "location": {
           "@type": "Place",
           "name": "The Court House",
-          "address": "Church Lane, Berkhamsted, HP4 2AX"
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Church Lane",
+            "addressLocality": "Berkhamsted",
+            "postalCode": "HP4 2AX",
+            "addressCountry": "GB"
+          }
         },
-        "startDate": "2026-01-05T19:45",
-        "endDate": "2026-01-05T21:00",
+        "startDate": "2026-04-20T19:45",
+        "endDate": "2026-04-20T21:00",
         "eventSchedule": {
           "@type": "Schedule",
           "byDay": "Monday",
@@ -57,18 +103,35 @@
           "endTime": "21:00",
           "repeatFrequency": "P1W"
         },
-        "offers": { "@type": "Offer", "price": "12", "priceCurrency": "GBP" }
+        "organizer": { "@id": "https://pennyoga.co.uk/about.html#penny" },
+        "offers": {
+          "@type": "Offer",
+          "price": "12",
+          "priceCurrency": "GBP",
+          "availability": "https://schema.org/InStock",
+          "url": "https://pennyoga.co.uk/classes/berkhamsted/",
+          "validFrom": "2024-01-01"
+        }
       },
       {
         "@type": "Event",
-        "name": "Tuesday Gentle Yoga - Hemel Hempstead",
+        "name": "Tuesday Gentle Yoga - Leverstock Green",
+        "url": "https://pennyoga.co.uk/classes/leverstock-green/",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
         "location": {
           "@type": "Place",
           "name": "Leverstock Green Village Hall",
-          "address": "Leverstock Green, Hemel Hempstead, HP3 8QG"
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Leverstock Green",
+            "addressLocality": "Hemel Hempstead",
+            "postalCode": "HP3 8QG",
+            "addressCountry": "GB"
+          }
         },
-        "startDate": "2026-01-06T12:30",
-        "endDate": "2026-01-06T15:15",
+        "startDate": "2026-04-21T12:30",
+        "endDate": "2026-04-21T15:15",
         "eventSchedule": {
           "@type": "Schedule",
           "byDay": "Tuesday",
@@ -76,18 +139,35 @@
           "endTime": "15:15",
           "repeatFrequency": "P1W"
         },
-        "offers": { "@type": "Offer", "price": "10", "priceCurrency": "GBP" }
+        "organizer": { "@id": "https://pennyoga.co.uk/about.html#penny" },
+        "offers": {
+          "@type": "Offer",
+          "price": "10",
+          "priceCurrency": "GBP",
+          "availability": "https://schema.org/InStock",
+          "url": "https://pennyoga.co.uk/classes/leverstock-green/",
+          "validFrom": "2024-01-01"
+        }
       },
       {
         "@type": "Event",
         "name": "Thursday Gentle Yoga - Hemel Hempstead",
+        "url": "https://pennyoga.co.uk/classes/hemel-hempstead/",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
         "location": {
           "@type": "Place",
           "name": "Carey Baptist Church",
-          "address": "Marlowes, Hemel Hempstead, HP1 1LD"
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Marlowes",
+            "addressLocality": "Hemel Hempstead",
+            "postalCode": "HP1 1LD",
+            "addressCountry": "GB"
+          }
         },
-        "startDate": "2026-01-08T14:00",
-        "endDate": "2026-01-08T15:15",
+        "startDate": "2026-04-23T14:00",
+        "endDate": "2026-04-23T15:15",
         "eventSchedule": {
           "@type": "Schedule",
           "byDay": "Thursday",
@@ -95,18 +175,29 @@
           "endTime": "15:15",
           "repeatFrequency": "P1W"
         },
-        "offers": { "@type": "Offer", "price": "10", "priceCurrency": "GBP" }
+        "organizer": { "@id": "https://pennyoga.co.uk/about.html#penny" },
+        "offers": {
+          "@type": "Offer",
+          "price": "10",
+          "priceCurrency": "GBP",
+          "availability": "https://schema.org/InStock",
+          "url": "https://pennyoga.co.uk/classes/hemel-hempstead/",
+          "validFrom": "2024-01-01"
+        }
       },
       {
         "@type": "Event",
         "name": "Wednesday Online Gentle Yoga",
+        "url": "https://pennyoga.co.uk/classes/online/",
         "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
         "location": {
           "@type": "VirtualLocation",
-          "name": "Zoom"
+          "name": "Zoom",
+          "url": "https://zoom.us/"
         },
-        "startDate": "2026-01-07T19:00",
-        "endDate": "2026-01-07T20:15",
+        "startDate": "2026-04-22T19:00",
+        "endDate": "2026-04-22T20:15",
         "eventSchedule": {
           "@type": "Schedule",
           "byDay": "Wednesday",
@@ -114,70 +205,14 @@
           "endTime": "20:15",
           "repeatFrequency": "P1W"
         },
-        "offers": { "@type": "Offer", "price": "9", "priceCurrency": "GBP" }
-      }
-    ]
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Are the classes suitable for beginners or people with limited mobility?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Absolutely. The gentle yoga classes are designed for all levels, including complete beginners and those with reduced mobility. Whether managing arthritis, recovering from an injury, or simply feeling stiff, modifications are offered throughout so everyone can work within their own comfortable range of movement."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What should I expect at a gentle yoga class in Berkhamsted or Hemel Hempstead?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Each session is 75 minutes of gentle Hatha Yoga, combining breathwork, simple postures, and relaxation. The atmosphere is friendly and unhurried. Just bring a mat if you have one, wear comfortable clothing, and arrive a few minutes early."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do I need to book in advance?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. Face-to-face classes run as a block booking. If you are new, Penny offers a one-off trial session so you can try a class before committing to a block. Get in touch to arrange your trial."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What qualifications does Penny have?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Penny qualified as a British Wheel of Yoga (BWY) teacher in 2004, after ten years as a yoga student. BWY teacher training takes two to three years and is a nationally recognised qualification. She holds current first aid certification and undertakes annual professional development."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How much do classes cost?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Face-to-face classes are £10–£12 per session depending on the venue and are booked as a block. The Wednesday online class via Zoom is £9 per session."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What do I need to bring to a face-to-face class?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Bring your own yoga mat and wear loose, comfortable clothing. A blanket is useful for the relaxation at the end of the session. Blocks and straps can be helpful but are not essential, especially for the first few classes."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How do the online Wednesday classes work?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The Wednesday evening class is a live, interactive session held via Zoom. Once booked, Penny sends a link to join. You practise from home on your own mat and receive guidance throughout, just as in a face-to-face class. The Zoom app is needed on your device before the first session."
+        "organizer": { "@id": "https://pennyoga.co.uk/about.html#penny" },
+        "offers": {
+          "@type": "Offer",
+          "price": "9",
+          "priceCurrency": "GBP",
+          "availability": "https://schema.org/InStock",
+          "url": "https://pennyoga.co.uk/classes/online/",
+          "validFrom": "2024-01-01"
         }
       }
     ]
@@ -285,7 +320,7 @@
           <svg class="class-card__detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           7:45pm to 9:00pm
         </p>
-        <p class="class-card__notes">Church Lane, Berkhamsted, HP4 2AX. A short walk from Berkhamsted High Street and the castle.</p>
+        <p class="class-card__notes">Church Lane, Berkhamsted, HP4 2AX. A short walk from Berkhamsted High Street and the castle. <a href="/classes/berkhamsted/">More about the Monday class &rarr;</a></p>
         <div class="class-card__map">
           <button type="button" class="map-facade" data-map-q="The+Court+House,+Church+Lane,+Berkhamsted+HP4+2AX" aria-label="Show map for The Court House, Berkhamsted">
             <svg class="map-facade__pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -313,7 +348,7 @@
           <svg class="class-card__detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           12:30pm to 1:45pm and 2:00pm to 3:15pm
         </p>
-        <p class="class-card__notes">Two classes available. Leverstock Green, Hemel Hempstead, HP3 8QG. On the green, with free parking nearby.</p>
+        <p class="class-card__notes">Two classes available. Leverstock Green, Hemel Hempstead, HP3 8QG. On the green, with free parking nearby. <a href="/classes/leverstock-green/">More about the Tuesday classes &rarr;</a></p>
         <div class="class-card__map">
           <button type="button" class="map-facade" data-map-q="Leverstock+Green+Village+Hall,+Hemel+Hempstead+HP3+8QG" aria-label="Show map for Leverstock Green Village Hall">
             <svg class="map-facade__pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -341,7 +376,7 @@
           <svg class="class-card__detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           2:00pm to 3:15pm
         </p>
-        <p class="class-card__notes">Marlowes, Hemel Hempstead, HP1 1LD. In the town centre, close to the Marlowes Shopping Centre.</p>
+        <p class="class-card__notes">Marlowes, Hemel Hempstead, HP1 1LD. In the town centre, close to the Marlowes Shopping Centre. <a href="/classes/hemel-hempstead/">More about the Thursday class &rarr;</a></p>
         <div class="class-card__map">
           <button type="button" class="map-facade" data-map-q="Carey+Baptist+Church,+Marlowes,+Hemel+Hempstead+HP1+1LD" aria-label="Show map for Carey Baptist Church, Hemel Hempstead">
             <svg class="map-facade__pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -369,7 +404,7 @@
           <svg class="class-card__detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           7:00pm to 8:15pm
         </p>
-        <p class="class-card__notes">A live class from the comfort of your own mat (dogs and cats optional). The class is one hour and fifteen minutes long. The platform I use is Zoom Cloud Meetings and you will need to download the app for your device before your first class. I will send you the class invitations after purchase. Classes can be booked by contacting me.</p>
+        <p class="class-card__notes">A live class from the comfort of your own mat (dogs and cats optional). The class is one hour and fifteen minutes long. The platform I use is Zoom Cloud Meetings and you will need to download the app for your device before your first class. I will send you the class invitations after purchase. Classes can be booked by contacting me. <a href="/classes/online/">More about the Wednesday Zoom class &rarr;</a></p>
         <p class="class-card__price">£9 <span>per session</span></p>
         <a href="mailto:penny.cronyn@gmail.com?subject=Pennyoga%20Website%20-%20Booking%20Enquiry%20-%20Wednesday%20Online%20Class" class="btn btn--secondary class-card__cta">Book this Class</a>
       </article>
@@ -472,6 +507,18 @@
         <div class="faq__answer">The Wednesday evening class is a live, interactive session held via Zoom. Once you book, I will send you the link to join. You practise from home on your own mat and I give guidance throughout, just as in a face-to-face class. You will need the Zoom app installed on your device before your first session.</div>
       </details>
     </div>
+  </div>
+</section>
+
+<!-- More for new students -->
+<section class="section">
+  <div class="container container--narrow">
+    <h2 class="section__heading">More for new students</h2>
+    <p>If you are wondering whether the classes are right for you, you might find these helpful:</p>
+    <ul>
+      <li><a href="/yoga-for-over-60s/">Gentle yoga for the over-60s</a> &mdash; what to expect in your 60s, 70s and 80s.</li>
+      <li><a href="/yoga-for-stiff-backs/">Gentle yoga for a stiff back, shoulders or hips</a> &mdash; for desk workers, recovering bodies, or anyone tight after years of sitting.</li>
+    </ul>
   </div>
 </section>
 
