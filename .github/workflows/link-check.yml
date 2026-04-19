@@ -25,14 +25,11 @@ jobs:
             --max-concurrency 4
             --accept 200,206,403,429
             --exclude-mail
-            --exclude '^mailto:'
-            --exclude '^tel:'
-            --exclude 'pennyoga\.co\.uk/(classes|yoga-for-over-60s|yoga-for-stiff-backs)'
             './**/*.html'
           fail: false
 
       - name: Open or update issue if links broken
-        if: env.lychee_exit_code != '0'
+        if: steps.lychee.outputs.exit_code != '0'
         uses: peter-evans/create-issue-from-file@v5
         with:
           title: Broken links found by lychee
