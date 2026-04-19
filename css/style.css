@@ -37,6 +37,7 @@
   body {
     min-block-size: 100dvh;
     line-height: 1.6;
+    touch-action: manipulation;
   }
 
   img, picture, svg {
@@ -1566,7 +1567,7 @@
    Scroll-driven animations (progressive enhancement)
    ============================================================ */
 @supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine) {
+  @media (prefers-reduced-motion: no-preference) {
     .fade-in {
       animation: fade-in-up linear both;
       animation-timeline: view();
@@ -1586,17 +1587,10 @@
   }
 }
 
-/* Fallback: elements are visible if scroll animations aren't supported
-   or on touch devices where the effect is disabled for performance */
-.fade-in {
-  opacity: 1;
-}
-
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine) {
-    .fade-in {
-      opacity: 0;
-    }
+/* Fallback: elements are visible if scroll animations aren't supported */
+@supports not (animation-timeline: view()) {
+  .fade-in {
+    opacity: 1;
   }
 }
 
