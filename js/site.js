@@ -21,13 +21,13 @@
     button.addEventListener('click', function () {
       var query = button.getAttribute('data-map-q');
       if (!query) return;
+      var ariaLabel = button.getAttribute('aria-label') || 'Map';
       var iframe = document.createElement('iframe');
-      iframe.src = 'https://maps.google.com/maps?q=' + query + '&output=embed';
-      iframe.title = (button.getAttribute('aria-label') || 'Map').replace(/^Show map for /, 'Map: ');
-      iframe.loading = 'lazy';
-      iframe.referrerPolicy = 'no-referrer-when-downgrade';
+      iframe.setAttribute('title', ariaLabel.replace(/^Show map for /, 'Map: '));
+      iframe.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
       iframe.setAttribute('allowfullscreen', '');
-      iframe.className = 'class-card__map-iframe';
+      iframe.setAttribute('class', 'class-card__map-iframe');
+      iframe.setAttribute('src', 'https://maps.google.com/maps?q=' + query + '&output=embed');
       button.replaceWith(iframe);
     });
   });
