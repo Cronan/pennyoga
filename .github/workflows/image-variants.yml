@@ -1,0 +1,44 @@
+name: Generate image variants
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'images/**.jpg'
+      - 'images/**.jpeg'
+      - 'images/**.png'
+      - '.github/scripts/generate_image_variants.mjs'
+      - '.github/workflows/image-variants.yml'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  variants:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install sharp
+        run: npm install --no-save --no-package-lock sharp@0.33
+
+      - name: Generate AVIF + WebP variants
+        run: node .github/scripts/generate_image_variants.mjs
+
+      - name: Commit and push if changed
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No new image variants."
+            exit 0
+          fi
+          git config user.name  "pennyoga-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add images/*.avif images/*.webp || true
+          git commit -m "chore: regenerate image variants"
+          git push
