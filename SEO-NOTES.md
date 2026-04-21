@@ -4,7 +4,7 @@ Notes for a future SEO pass. This file is the canonical hand-off for the next se
 
 ## Context
 
-The April 2026 SEO pass added six new pages and a tighter schema. Branch `claude/seo-website-review-XFXdu` covers that work. The working session focused on:
+The April 2026 SEO pass (branch `claude/seo-website-review-XFXdu`) added six new pages and a tighter schema:
 
 - Per-venue pages: `/classes/berkhamsted/`, `/classes/leverstock-green/`, `/classes/hemel-hempstead/`, `/classes/online/`
 - Topical landing pages: `/yoga-for-over-60s/`, `/yoga-for-stiff-backs/`
@@ -12,7 +12,9 @@ The April 2026 SEO pass added six new pages and a tighter schema. Branch `claude
 - Three GitHub Actions: `rotate-events.yml`, `image-variants.yml`, `link-check.yml`
 - Internal linking from `index.html` and `about.html` into the new pages
 
-The session-end claim verification pass corrected most venue facts (parking, transport, accessibility) against web sources. **Health-claim language on the over-60s and stiff-backs pages is being rewritten separately — see "Open work" below.**
+The session-end claim verification pass corrected most venue facts (parking, transport, accessibility) against web sources.
+
+A follow-up pass on branch `claude/seo-notes-review-7xKzh` closed the health-claim audit on both topical pages and added a light premium-positioning polish ("small, unhurried") to the home schedule subheading and the three face-to-face venue-page intros. See **Done since last hand-off** below.
 
 ---
 
@@ -20,27 +22,16 @@ The session-end claim verification pass corrected most venue facts (parking, tra
 
 ### Demographic angle for the wealthy older catchment (PRIORITY)
 
-The Berkhamsted/Tring/Hemel corridor has a high concentration of affluent retired and semi-retired professionals. Median Berkhamsted house price is ~£700k+; surrounding rural-fringe villages (Potten End, Bourne End, Felden, Northchurch, parts of Tring and Bovingdon) skew similarly. Penny's existing demographic likely already reflects this, but the site copy doesn't speak to it.
+The Berkhamsted/Tring/Hemel corridor has a high concentration of affluent retired and semi-retired professionals. Median Berkhamsted house price is ~£700k+; surrounding rural-fringe villages (Potten End, Bourne End, Felden, Northchurch, parts of Tring and Bovingdon) skew similarly. Penny's existing demographic likely already reflects this. A light premium-positioning polish has landed ("small, unhurried"); the bigger levers below still need Penny's input.
 
-Possible content angles to explore:
+Possible content angles still to explore:
 
-- **Premium positioning language.** Replace any budget-friendly framing with phrases like "small, considered classes", "traditional, BWY-rooted teaching", "unhurried". Avoid words like "cheap", "value", "affordable" unless that's a deliberate market choice.
 - **Private 1:1 sessions** as a dedicated page if Penny offers them (or would consider). Higher-margin, high-intent search ("private yoga teacher Berkhamsted").
 - **Small-group / corporate / wellness bookings** — possible new income stream. A dedicated page could rank for "corporate yoga Hertfordshire" / "office yoga Berkhamsted".
 - **Specific neighbourhood call-outs** in venue pages once Penny confirms her catchment. Examples: "popular with students from Northchurch, Potten End, Felden". Hyper-local mentions help the long tail.
-- **A `/teaching/` or `/about/teaching-philosophy/` page** that signals depth and care — strengthens E-E-A-T and appeals to discerning clients comparing options.
+- **A `/teaching/` or `/about/teaching-philosophy/` page** that signals depth and care — strengthens E-E-A-T and appeals to discerning clients comparing options. Penny should shape the voice before a draft goes live.
 
-Verify catchment with Penny before any neighbourhood-specific copy goes live.
-
-### Health-claim audit on the topical pages
-
-`/yoga-for-over-60s/` and `/yoga-for-stiff-backs/` originally contained claims like "supports bone density", "reduces falls risk", "improves sleep", "eases muscular guarding". Penny would never make health claims about her classes. Rewrite principle:
-
-- Describe what gentle yoga **is** (a practice, a class structure, a way of moving), not what it **does** for you.
-- Keep the SEO-relevant keywords (over-60s, stiff back, etc.) without medical framing.
-- Replace "what yoga can / cannot do" sections with descriptions of class content plus the existing "see a GP first" caveat.
-
-This rewrite is being done in the active session if not already complete by the time you're reading this.
+Verify with Penny before any private, corporate or neighbourhood-specific copy goes live.
 
 ### Smaller items still pending
 
@@ -51,6 +42,13 @@ This rewrite is being done in the active session if not already complete by the 
 - **Branded 1200×630 OG image.** All pages currently reuse `images/canal.jpg` or venue cards as the social-share image. A dedicated branded image with the wordmark would lift social CTR.
 - **Google Business Profile.** Single biggest off-site lever. Verify the service-area business, list all three venues plus online classes, gather reviews there (where they're allowed by Google).
 - **Google Search Console.** Submit `sitemap.xml` and request indexing for the six new URLs once the branch is on `main`.
+
+---
+
+## Done since last hand-off
+
+- **Health-claim audit** on `/yoga-for-over-60s/` and `/yoga-for-stiff-backs/` — rewritten to describe what gentle yoga *is* rather than what it *does*, with the "see a GP first" caveat retained (commits `48a287a`, `01ebd02`).
+- **Light premium-positioning pass.** No budget framing (`cheap` / `affordable` / `value`) existed to strip. Added "small" to each of the three face-to-face venue-page intros and "small, unhurried" to the home schedule subheading. Heavier positioning work (private 1:1, corporate, neighbourhood call-outs, teaching-philosophy page) still needs Penny's input and remains in Open work.
 
 ---
 
