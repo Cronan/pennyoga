@@ -1105,6 +1105,16 @@
     gap: var(--space-lg);
   }
 
+  /* Generic intro block for pages that aren't the About page —
+     mirrors the vertical rhythm of .about-intro__text so the
+     eyebrow, H1 and lead paragraph have proper breathing room. */
+  .page-intro {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    margin-block-end: var(--space-xl);
+  }
+
   .about-intro__eyebrow {
     font-size: var(--font-size-xs);
     font-weight: 600;
