@@ -15,7 +15,10 @@ pennyoga/
 ├── contact.html            # Contact details
 ├── privacy-policy.html     # UK GDPR compliant
 ├── 404.html                # Custom not-found page
-├── classes/                # Per-venue landing pages
+├── classes/                # Per-venue landing pages (Berkhamsted, Leverstock Green, Hemel Hempstead, Online)
+├── yoga-for-over-60s/      # Topical landing page
+├── yoga-for-stiff-backs/   # Topical landing page
+├── SEO-NOTES.md            # Running list of SEO follow-ups for future sessions
 ├── CNAME                   # pennyoga.co.uk
 ├── robots.txt
 ├── sitemap.xml
@@ -49,6 +52,11 @@ The stylesheet uses CSS Cascade Layers (`@layer reset, base, layout, components,
 
 Modern features used: container queries, scroll-driven animations, color-mix(), view transitions. All have fallbacks.
 
+The reset zeroes all element margins, so body prose needs an opt-in wrapper for heading rhythm:
+- `.page-intro` — flex-column with gap, wraps the eyebrow + H1 + lead paragraph on non-home pages.
+- `.page-content` — applied to the main `.container` on non-home pages to restore `h2`/`h3`/`p`/`ul`/`ol`/`li` margins via direct-child selectors (so it doesn't touch `.page-intro` or `.cta-section` children).
+- `.prose` — equivalent rhythm for the privacy-policy; also underlines anchors, so not suitable where CTA buttons appear.
+
 ## Conventions
 
 - No runtime package manager for the site itself. Do not introduce npm/yarn dependencies the browser would need.
@@ -71,6 +79,8 @@ Modern features used: container queries, scroll-driven animations, color-mix(), 
 - Do not introduce a client-side framework (React/Vue/etc.) or a transpilation step for site code.
 - Do not change the colour palette without checking contrast ratios.
 - Do not add `Review` / `AggregateRating` JSON-LD for on-site testimonials — Google disallows self-served reviews and the site risks a manual action.
+- Do not remove the `google-site-verification` meta tag from `index.html` — Google periodically re-verifies and will revoke access if the tag disappears.
+- Do not make therapeutic, medical or health-benefit claims about Penny's classes (e.g. "improves bone density", "reduces falls risk", "eases back pain"). Penny does not make these claims herself; the site describes what a class **is**, not what it **does** for you. When writing about yoga for older students or anyone with a condition, steer readers to a GP or physiotherapist first.
 
 ## Git
 
