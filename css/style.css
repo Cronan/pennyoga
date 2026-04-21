@@ -1115,6 +1115,37 @@
     margin-block-end: var(--space-xl);
   }
 
+  /* Heading and paragraph rhythm for body prose on the venue and
+     topical landing pages. Direct-child selectors only, so it does
+     not affect children of .page-intro, .cta-section, .class-grid,
+     or other scoped components inside the same container. */
+  .page-content {
+    & > h2 {
+      margin-block-start: var(--space-2xl);
+      margin-block-end: var(--space-md);
+    }
+
+    & > h3 {
+      margin-block-start: var(--space-xl);
+      margin-block-end: var(--space-sm);
+    }
+
+    & > p {
+      margin-block-end: var(--space-md);
+    }
+
+    & > ul,
+    & > ol {
+      padding-inline-start: var(--space-xl);
+      margin-block-end: var(--space-md);
+    }
+
+    & > ul > li,
+    & > ol > li {
+      margin-block-end: var(--space-xs);
+    }
+  }
+
   .about-intro__eyebrow {
     font-size: var(--font-size-xs);
     font-weight: 600;
