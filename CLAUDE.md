@@ -18,7 +18,9 @@ pennyoga/
 ├── classes/                # Per-venue landing pages (Berkhamsted, Leverstock Green, Hemel Hempstead, Online)
 ├── yoga-for-over-60s/      # Topical landing page
 ├── yoga-for-stiff-backs/   # Topical landing page
-├── SEO-NOTES.md            # Running list of SEO follow-ups for future sessions
+├── TODO.md                 # The outstanding-work list (internal, not published)
+├── SEO-NOTES.md            # Background and reasoning for SEO work (internal, not published)
+├── _config.yml             # Jekyll exclude list that keeps internal .md files off the site
 ├── CNAME                   # pennyoga.co.uk
 ├── robots.txt
 ├── sitemap.xml
@@ -67,6 +69,7 @@ The reset zeroes all element margins, so body prose needs an opt-in wrapper for 
 - Accessibility: skip links, ARIA labels, focus-visible outlines, reduced-motion support.
 - Semantic HTML with proper heading hierarchy.
 - Lazy loading for images below the fold.
+- GitHub Pages runs Jekyll, which publishes any Markdown file as a page. Internal notes (`CLAUDE.md`, `TODO.md`, `SEO-NOTES.md`) are listed under `exclude` in `_config.yml`; add any new non-site file there too. Outstanding work goes in `TODO.md`.
 
 ## Content details
 

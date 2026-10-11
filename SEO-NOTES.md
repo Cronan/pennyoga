@@ -1,6 +1,6 @@
 # SEO follow-ups
 
-Notes for a future SEO pass. This file is the canonical hand-off for the next session — if you're picking this up cold, read it then check the most recent commits on `main` for current state.
+Background and reasoning for SEO work. The to-do list itself lives in `TODO.md`; if you're picking this up cold, read that first, then this, then the most recent commits on `main`.
 
 ## Context
 
@@ -18,30 +18,18 @@ A follow-up pass on branch `claude/seo-notes-review-7xKzh` closed the health-cla
 
 ---
 
-## Open work
+## Background: demographic angle for the older catchment
 
-### Demographic angle for the wealthy older catchment (PRIORITY)
+The Berkhamsted/Tring/Hemel corridor has a high concentration of affluent retired and semi-retired professionals. Median Berkhamsted house price is ~£700k+; surrounding rural-fringe villages (Potten End, Bourne End, Felden, Northchurch, parts of Tring and Bovingdon) skew similarly. Penny's existing demographic likely already reflects this. A light premium-positioning polish has landed ("small, unhurried").
 
-The Berkhamsted/Tring/Hemel corridor has a high concentration of affluent retired and semi-retired professionals. Median Berkhamsted house price is ~£700k+; surrounding rural-fringe villages (Potten End, Bourne End, Felden, Northchurch, parts of Tring and Bovingdon) skew similarly. Penny's existing demographic likely already reflects this. A light premium-positioning polish has landed ("small, unhurried"); the bigger levers below still need Penny's input.
+Why each of the bigger levers in `TODO.md` might be worth it, if Penny wants the work:
 
-Possible content angles still to explore:
+- **Private 1:1 sessions.** Higher-margin, high-intent search ("private yoga teacher Berkhamsted").
+- **Small-group / corporate / wellness bookings.** Could rank for "corporate yoga Hertfordshire" / "office yoga Berkhamsted".
+- **Neighbourhood call-outs** on venue pages ("popular with students from Northchurch, Potten End, Felden"). Hyper-local mentions help the long tail.
+- **A `/teaching/` or `/about/teaching-philosophy/` page.** Strengthens E-E-A-T and appeals to people comparing teachers. Penny should shape the voice before a draft goes live.
 
-- **Private 1:1 sessions** as a dedicated page if Penny offers them (or would consider). Higher-margin, high-intent search ("private yoga teacher Berkhamsted").
-- **Small-group / corporate / wellness bookings** — possible new income stream. A dedicated page could rank for "corporate yoga Hertfordshire" / "office yoga Berkhamsted".
-- **Specific neighbourhood call-outs** in venue pages once Penny confirms her catchment. Examples: "popular with students from Northchurch, Potten End, Felden". Hyper-local mentions help the long tail.
-- **A `/teaching/` or `/about/teaching-philosophy/` page** that signals depth and care — strengthens E-E-A-T and appeals to discerning clients comparing options. Penny should shape the voice before a draft goes live.
-
-Verify with Penny before any private, corporate or neighbourhood-specific copy goes live.
-
-### Smaller items still pending
-
-- **Testimonials.** Section is commented out on `index.html`. Penny is collecting student quotes; populate when received. **No `Review` / `AggregateRating` JSON-LD** — Google disallows self-served reviews and risks a manual action (rule recorded in `CLAUDE.md`).
-- **Carey Baptist front car park.** Currently noted as "subject to availability" — confirm with Penny whether students can actually use it.
-- **BWY portal entry.** Penny needs to log in and refresh class entry 619; check whether she has a teacher-level profile worth linking from `sameAs`.
-- **Floor surface and chair availability** at Leverstock Green Village Hall and Carey Baptist Church. Currently unspecified on both venue pages; can be added when Penny confirms.
-- **Branded 1200×630 OG image.** All pages currently reuse `images/canal.jpg` or venue cards as the social-share image. A dedicated branded image with the wordmark would lift social CTR.
-- **Google Business Profile.** Single biggest off-site lever. Verify the service-area business, list all three venues plus online classes, gather reviews there (where they're allowed by Google).
-- **Google Search Console.** Submit `sitemap.xml` and request indexing for the six new URLs once the branch is on `main`.
+Verify with Penny before any private, corporate or neighbourhood-specific copy goes live. Never add `Review` / `AggregateRating` JSON-LD for testimonials (rule recorded in `CLAUDE.md`).
 
 ---
 

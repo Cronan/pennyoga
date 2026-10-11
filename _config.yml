@@ -1,0 +1,7 @@
+# GitHub Pages builds this repo with Jekyll, which publishes every Markdown
+# file as a page (SEO-NOTES.md would appear at /SEO-NOTES.html). Keep internal
+# notes off the live site. Any new non-site file in the repo root goes here too.
+exclude:
+  - CLAUDE.md
+  - SEO-NOTES.md
+  - TODO.md
