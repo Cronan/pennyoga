@@ -33,6 +33,43 @@ Verify with Penny before any private, corporate or neighbourhood-specific copy g
 
 ---
 
+## LLM search visibility (October 2026 review)
+
+The question was how to get the site in front of people who ask Google (AI Overviews / AI Mode), ChatGPT or Claude for a gentle or local yoga class, and what the state of the art is for steering them to a particular class. Research was web-only; the live site could not be fetched from the session, so nothing below was measured against live rankings.
+
+### What the engines actually use
+
+- **Google AI Overviews and AI Mode** draw on the ordinary Search index plus the Google Business Profile and Maps data for local queries. Google's own guidance (Search Central, "AI features and your website") says there is no AI-specific optimisation: a page must be indexed and eligible for a snippet, and the normal SEO fundamentals apply. Structured data is not required for AI features and `llms.txt` is explicitly neither needed nor rewarded. The only measurement Google offers is the AI Overviews / AI Mode impressions view in Search Console, launched June 2026 and still rolling out (UK sites first). For a local business the Business Profile is the single largest input, which is why it heads the TODO list.
+- **ChatGPT** grounds local answers in Bing's index and third-party listings and review sites. Several informal tests found it citing directories rather than the business's own site. The crawler that governs appearance in ChatGPT search is `OAI-SearchBot` (GPTBot is training only). Bing Places, Bing Webmaster Tools and IndexNow are the ChatGPT-side equivalents of the Google Business Profile and Search Console.
+- **Claude** uses `Claude-SearchBot` for search grounding and `Claude-User` for user-requested fetches; `ClaudeBot` is training only. Anthropic recommends `llms.txt` in its agent guidance but there is no evidence it changes citation.
+- **Perplexity and Gemini** behave more like Google: Gemini surfaces many more unique local businesses than ChatGPT because it reads Maps data directly.
+- **Common thread.** Across vendor studies (Yext, SOCi, Uberall, BrightLocal; none independent, all directionally consistent), first-party sites and listings are cited in roughly equal measure, and assistants prefer pages that state facts plainly: who, where, when, how much, who it suits, and whether there is room. Marketing copy is skipped; a sentence that answers a question is quoted.
+
+### What changed on the site
+
+- **Plain facts, quotable.** A text timetable on the home page (day, time, venue, price, spaces), an "At a glance" summary in `llms.txt`, and FAQ answers that give the day, time, venue and price in a single sentence. The same answers are mirrored in `FAQPage` JSON-LD on the home, Hemel and daytime pages. Google no longer shows FAQ rich results for sites like this one, so the markup is for parsers, not for stars.
+- **Availability stated outright.** "Spaces available" is the highest-intent phrase a prospective student can type, and nothing on the site said it. It now appears wherever Thursday is mentioned, tagged `data-availability` so it can be found and changed in one pass. See `CLAUDE.md` for the rule.
+- **Schema tidy-up.** Each `Event` has a stable `@id` (`/classes/<venue>/#event`), `duration`, `inLanguage`, `isAccessibleForFree: false` and an `audience` that says the classes suit beginners and people in their 60s to 80s. A `WebSite` node ties pages together, `areaServed` names the villages people search from, and the contact page's entity points at the same `@id` as the home page. None of this is required for AI features; it removes ambiguity for anything that does parse it.
+- **Crawlers.** `robots.txt` already allowed everything; it now names each AI search crawler so a future edit cannot block one by accident. `llms.txt` is cheap and harmless; expect nothing from it.
+- **IndexNow.** A workflow pings Bing and friends with changed URLs on each content push. Google ignores it. The key file at the root is public by design.
+- **Internal links.** Every page footer links to every class page. Until now the venue and topical pages were reachable only from cards on the home page, which weakened both crawl depth and the entity graph.
+
+### Filling a particular class: the honest state of the art
+
+There is no mechanism to "suggest a day" to an assistant. What works is making the class's page the clearest answer to the question that person would ask, and making sure the places assistants read agree with it:
+
+1. One page per class, already in place. A second page for the same class is a near-duplicate and competes with the first; it was not built.
+2. A page for the *intent* that matches the class. The Thursday class is a daytime class in central Hemel Hempstead, so `/daytime-yoga-hemel-hempstead/` answers "daytime / afternoon yoga Hemel Hempstead" and leads with Thursday. When Thursday fills, re-point the emphasis rather than deleting the page.
+3. Say "spaces available" in words, on the home page, the class page, the intent page and in the FAQ schema. Keep it true.
+4. Mirror it off-site: a Business Profile "Update" post, the venue's own what's-on page, a Nextdoor or Facebook post, each with the same day, time and venue. Assistants weigh agreement between sources.
+5. Measure with Search Console (the AI impressions view when it appears) and by asking the assistants the questions a student would ask: "gentle yoga class Hemel Hempstead Thursday afternoon", "yoga for over 60s near Berkhamsted", "yoga classes with spaces in Hemel Hempstead". Repeat monthly; note which sources each one cites and go and fix those.
+
+### Sources consulted
+
+Google Search Central, "AI features and your website"; OpenAI developer docs on GPTBot / OAI-SearchBot / ChatGPT-User; Anthropic help centre article 8896518 on ClaudeBot, Claude-SearchBot and Claude-User; IndexNow documentation (indexnow.org, Yandex reference); schema.org `Schedule` / `eventSchedule`; Google Business Profile help on service-area businesses; vendor analyses from Whitespark, Yext, SOCi, Uberall, BrightLocal, SE Ranking (llms.txt adoption) and several agency write-ups on Search Console's AI performance report. Vendor numbers were treated as directional only.
+
+---
+
 ## Done since last hand-off
 
 - **Health-claim audit** on `/yoga-for-over-60s/` and `/yoga-for-stiff-backs/` — rewritten to describe what gentle yoga *is* rather than what it *does*, with the "see a GP first" caveat retained (commits `48a287a`, `01ebd02`).

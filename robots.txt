@@ -1,19 +1,57 @@
+# Everyone is welcome to crawl this site, including the AI search crawlers.
+# The explicit entries below document which bots matter for which product:
+# search-and-citation crawlers are the ones that put the site in front of
+# people asking an assistant for a local yoga class. Training crawlers are
+# allowed too; there is nothing private here.
+
 User-agent: *
 Allow: /
 
-User-agent: GPTBot
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
+# Google Search, AI Overviews and AI Mode use Googlebot. Google-Extended only
+# controls Gemini training and grounding outside Search.
 User-agent: Google-Extended
 Allow: /
 
+# ChatGPT search results and citations.
+User-agent: OAI-SearchBot
+Allow: /
+
+# ChatGPT fetching a page a user has asked about.
+User-agent: ChatGPT-User
+Allow: /
+
+# OpenAI training crawler.
+User-agent: GPTBot
+Allow: /
+
+# Claude search results and citations.
+User-agent: Claude-SearchBot
+Allow: /
+
+# Claude fetching a page a user has asked about.
+User-agent: Claude-User
+Allow: /
+
+# Anthropic training crawler.
 User-agent: ClaudeBot
 Allow: /
 
+# Perplexity.
 User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Bing powers Copilot and ChatGPT's web index.
+User-agent: Bingbot
+Allow: /
+
+# Apple (Siri, Spotlight, Apple Intelligence).
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
 Allow: /
 
 Sitemap: https://pennyoga.co.uk/sitemap.xml

@@ -16,13 +16,16 @@ pennyoga/
 ├── privacy-policy.html     # UK GDPR compliant
 ├── 404.html                # Custom not-found page
 ├── classes/                # Per-venue landing pages (Berkhamsted, Leverstock Green, Hemel Hempstead, Online)
+├── daytime-yoga-hemel-hempstead/  # Intent page: Tuesday + Thursday daytime classes; leads with whichever has spaces
 ├── yoga-for-over-60s/      # Topical landing page
 ├── yoga-for-stiff-backs/   # Topical landing page
 ├── TODO.md                 # The outstanding-work list (internal, not published)
 ├── SEO-NOTES.md            # Background and reasoning for SEO work (internal, not published)
 ├── _config.yml             # Jekyll exclude list that keeps internal .md files off the site
 ├── CNAME                   # pennyoga.co.uk
-├── robots.txt
+├── robots.txt              # Allows everything; names the AI search crawlers explicitly
+├── llms.txt                # Plain-text summary of the business and page list for AI agents
+├── <32 hex chars>.txt      # IndexNow key file (public by design; see indexnow.yml)
 ├── sitemap.xml
 ├── css/
 │   └── style.css           # Single stylesheet (cascade layers, dark mode)
@@ -42,6 +45,7 @@ CI is allowed for housekeeping that would otherwise rot or be tedious. Current w
 - `rotate-events.yml` — daily cron (and on any push that edits `.github/closures.txt`); rewrites Event `startDate`/`endDate` in `index.html` and `classes/*/index.html` so structured data always points at the next class Penny is actually teaching. Dates listed in `.github/closures.txt` (holidays, term breaks) are skipped, and the same list is copied into the `#class-closures` block in `index.html` so the next-class badge in `js/site.js` skips them too. Edit `closures.txt`, never the block. It does not touch `sitemap.xml`: update a page's `lastmod` by hand when its content genuinely changes.
 - `image-variants.yml` — on push to `main`; generates `.avif` and `.webp` siblings for any new/changed `.jpg` in `images/` using `sharp`.
 - `link-check.yml` — weekly cron via `lychee`; keeps a single open issue updated while links are broken and closes it when they recover. If lychee itself fails to run, the job goes red rather than filing an issue.
+- `indexnow.yml` — on push to `main` that changes HTML, `sitemap.xml` or `llms.txt`; POSTs the changed URLs to IndexNow (Bing, Yandex and friends; Google ignores it). Skips the bot's own commits. The key file at the repo root must keep its name equal to its contents.
 
 Workflows must never block local development or require contributors to install anything.
 
@@ -75,6 +79,15 @@ The reset zeroes all element margins, so body prose needs an opt-in wrapper for 
 
 - Four weekly classes: Monday Berkhamsted, Tuesday Hemel (x2), Thursday Hemel, plus Wednesday online via Zoom.
 - Pablo memorial in footer (the family dog).
+- Every page footer carries a "Classes" column linking the four venue pages, the daytime page and the two topical pages. Keep it identical across pages.
+
+## Availability notices (which class is being filled)
+
+The site says in plain words which class is taking new students, because that is what people ask search engines and assistants ("yoga class near me with spaces"). It is hand-maintained, not automated:
+
+- Every notice carries `data-availability="<weekday>"`. `grep -rn 'data-availability' --include=*.html` lists all of them: the home-page strip, Thursday card badge and FAQ answer, the home and daytime timetables, the venue-page notice and FAQ, and the "Where and when" lists on the topical pages. The matching `FAQPage` JSON-LD answers and the Hemel meta description say the same thing in prose.
+- When the class fills, or a different class needs students, update every notice in one commit (move the attribute, or delete the notices) and bump `lastmod` for the pages touched. Stale "spaces available" copy costs more trust than no notice at all.
+- The daytime page (`/daytime-yoga-hemel-hempstead/`) is the intent page for "afternoon / daytime yoga in Hemel Hempstead". It leads with whichever daytime class has room. Do not create a second page for a class that already has a venue page; a near-duplicate competes with the original.
 
 ## What not to do
 

@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://pennyoga.co.uk/</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -32,7 +32,7 @@
   </url>
   <url>
     <loc>https://pennyoga.co.uk/classes/hemel-hempstead/</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -43,14 +43,20 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://pennyoga.co.uk/daytime-yoga-hemel-hempstead/</loc>
+    <lastmod>2026-10-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://pennyoga.co.uk/yoga-for-over-60s/</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pennyoga.co.uk/yoga-for-stiff-backs/</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>

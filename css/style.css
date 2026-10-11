@@ -467,6 +467,28 @@
     margin-block-end: var(--space-xs);
   }
 
+  .site-footer__mid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-lg) var(--space-2xl);
+  }
+
+  @media (min-width: 768px) {
+    .site-footer__mid {
+      justify-content: flex-start;
+    }
+  }
+
+  .site-footer__heading {
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--clr-teal);
+    margin-block-end: var(--space-xs);
+  }
+
   .site-footer__contact-list {
     list-style: none;
     font-size: var(--font-size-sm);
@@ -1144,6 +1166,87 @@
     & > ol > li {
       margin-block-end: var(--space-xs);
     }
+  }
+
+  /* Availability notice: the one place on a page that says which class is
+     taking new students. Content carries data-availability so every notice
+     can be found with grep when the answer changes. */
+  .availability-notice {
+    display: flex;
+    gap: var(--space-sm);
+    align-items: baseline;
+    padding: var(--space-md) var(--space-lg);
+    margin-block-end: var(--space-xl);
+    border-inline-start: 4px solid var(--clr-sage);
+    border-radius: var(--radius);
+    background-color: var(--clr-sage-light);
+    font-size: var(--font-size-sm);
+  }
+
+  .availability-notice::before {
+    content: "";
+    flex: none;
+    inline-size: 0.6em;
+    block-size: 0.6em;
+    border-radius: 50%;
+    background-color: var(--clr-sage-deep);
+    transform: translateY(-0.05em);
+  }
+
+  .availability-notice--inline {
+    display: inline-flex;
+    margin-block: var(--space-md) 0;
+  }
+
+  .class-card__availability {
+    display: inline-block;
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--clr-sage-deep);
+    background-color: var(--clr-sage-light);
+    border-radius: var(--radius);
+    padding: 0.15em 0.6em;
+    margin-inline-start: var(--space-sm);
+    vertical-align: middle;
+  }
+
+  /* Plain-text timetable: easy to read, easy to quote. */
+  .schedule-table {
+    inline-size: 100%;
+    border-collapse: collapse;
+    font-size: var(--font-size-sm);
+    margin-block: var(--space-md) var(--space-lg);
+  }
+
+  .schedule-table th,
+  .schedule-table td {
+    text-align: start;
+    vertical-align: top;
+    padding: var(--space-sm) var(--space-md);
+    border-block-end: 1px solid var(--clr-border);
+  }
+
+  .schedule-table thead th {
+    font-size: var(--font-size-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--clr-teal);
+  }
+
+  .schedule-table tbody th {
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .schedule-table tr[data-availability] td:last-child {
+    color: var(--clr-sage-deep);
+  }
+
+  .schedule-table__wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .about-intro__eyebrow {

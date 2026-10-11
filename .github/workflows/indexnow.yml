@@ -1,0 +1,38 @@
+name: IndexNow ping
+
+# Tells Bing (and so Copilot and ChatGPT's web index), Yandex and other
+# IndexNow participants which pages changed, instead of waiting for them to
+# recrawl. Google ignores IndexNow; it has the sitemap and Search Console.
+#
+# The key file at the repo root (<key>.txt) is public by design: IndexNow
+# verifies ownership by fetching it from the site, nothing more.
+#
+# Skipped for the bot's own commits (daily event-date ticks are not content).
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**.html'
+      - 'sitemap.xml'
+      - 'llms.txt'
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  ping:
+    if: github.actor != 'github-actions[bot]' && github.actor != 'pennyoga-bot'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Submit changed URLs
+        env:
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+          EVENT: ${{ github.event_name }}
+        run: python3 .github/scripts/indexnow_ping.py
