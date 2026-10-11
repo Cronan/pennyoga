@@ -37,9 +37,9 @@ Edit HTML directly. Push to `main`. GitHub Pages deploys automatically. Preview 
 ## GitHub Actions
 
 CI is allowed for housekeeping that would otherwise rot or be tedious. Current workflows:
-- `rotate-events.yml` — daily cron; rewrites Event `startDate`/`endDate` in `index.html` and per-venue pages so structured data always points at the next occurrence, and bumps `sitemap.xml` `lastmod` dates.
+- `rotate-events.yml` — daily cron (and on any push that edits `.github/closures.txt`); rewrites Event `startDate`/`endDate` in `index.html` and `classes/*/index.html` so structured data always points at the next class Penny is actually teaching. Dates listed in `.github/closures.txt` (holidays, term breaks) are skipped. It does not touch `sitemap.xml`: update a page's `lastmod` by hand when its content genuinely changes.
 - `image-variants.yml` — on push to `main`; generates `.avif` and `.webp` siblings for any new/changed `.jpg` in `images/` using `sharp`.
-- `link-check.yml` — weekly cron via `lychee`; opens an issue if external links break.
+- `link-check.yml` — weekly cron via `lychee`; keeps a single open issue updated while links are broken and closes it when they recover. If lychee itself fails to run, the job goes red rather than filing an issue.
 
 Workflows must never block local development or require contributors to install anything.
 

@@ -56,8 +56,9 @@ Verify with Penny before any private, corporate or neighbourhood-specific copy g
 
 If you're editing content, be aware:
 
-- `rotate-events.yml` (daily 03:15 UTC) rewrites Event `startDate`/`endDate` in JSON-LD to the next occurrence of each weekday and bumps `sitemap.xml` `lastmod` if anything changed. Targeted regex; small diffs only. New venue pages with their own Event blocks are picked up automatically (the script walks `index.html` plus everything matching `classes/*.html`).
+- `rotate-events.yml` (daily 03:15 UTC, plus on any push to `.github/closures.txt`) rewrites Event `startDate`/`endDate` in JSON-LD to the next occurrence of each weekday, skipping dates listed in `.github/closures.txt`. Targeted regex; small diffs only. New venue pages with their own Event blocks are picked up automatically (the script walks `index.html` plus everything matching `classes/*/index.html`). Until October 2026 the glob was `classes/*.html`, which matched nothing, so venue-page dates sat at April 2026 for six months.
+- `sitemap.xml` `lastmod` is maintained by hand. The rotation used to bump every URL on every run, which teaches Google to ignore the field; set a page's date only when its content changes.
 - `image-variants.yml` (on push to `main` when `images/**` changes) generates `.avif` and `.webp` siblings via `sharp`. Don't manually maintain variants.
-- `link-check.yml` (weekly Monday 06:00 UTC) runs `lychee` against all local HTML and opens an issue on broken links. Excludes `mailto:` and `tel:`.
+- `link-check.yml` (weekly Monday 06:00 UTC) runs `lychee` against all local HTML (root-relative links resolved against the checkout) and keeps one issue open and updated while links are broken, closing it when they pass. Excludes `mailto:` and `tel:`. Until October 2026 an obsolete `--exclude-mail` flag made lychee exit before checking anything, which produced 25 empty issues (#22, #31–#54); a missing report now fails the job instead.
 
 Repo Settings → Actions → General must have "Workflow permissions = Read and write" for the bot to push.

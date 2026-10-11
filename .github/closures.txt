@@ -1,0 +1,11 @@
+# Dates Penny is not teaching.
+#
+# The daily rotate-events workflow skips these when it picks the next class
+# date for the Event structured data, so Google is never told about a class
+# that isn't running. Each class is on its own weekday, so closing a date
+# only affects the class that falls on it.
+#
+# One entry per line: a single date or an inclusive range, ISO format.
+#   2026-12-21                 # one day
+#   2026-12-21..2027-01-03     # range, both ends included
+# Anything after # is ignored. Past entries are harmless and can be pruned.

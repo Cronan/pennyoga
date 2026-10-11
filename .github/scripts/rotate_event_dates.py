@@ -4,12 +4,14 @@
 Walks each <script type="application/ld+json"> block in the given HTML files,
 finds every Event with an eventSchedule.byDay (e.g. "Monday"), and rewrites
 startDate/endDate to the next occurrence of that weekday on or after today
-(Europe/London). Only the two date fields are touched, so the diff stays small.
+(Europe/London), skipping any date listed in .github/closures.txt. Only the two
+date fields are touched, so the diff stays small.
 
-If any HTML file changes, sitemap.xml lastmod is bumped to today.
+sitemap.xml is deliberately left alone: a JSON-LD date tick is not a content
+change, and lastmod is only useful to Google if it reflects real edits.
 
 Usage: python rotate_event_dates.py [path ...]
-   With no args: defaults to ./index.html and ./classes/*.html relative to repo root.
+   With no args: defaults to ./index.html and ./classes/*/index.html relative to repo root.
 """
 from __future__ import annotations
 
@@ -17,7 +19,7 @@ import json
 import pathlib
 import re
 import sys
-from datetime import datetime, timedelta
+from datetime import date, datetime, timedelta
 from zoneinfo import ZoneInfo
 
 WEEKDAYS = {
@@ -26,6 +28,7 @@ WEEKDAYS = {
 }
 LONDON = ZoneInfo("Europe/London")
 REPO = pathlib.Path(__file__).resolve().parents[2]
+CLOSURES = REPO / ".github" / "closures.txt"
 
 JSONLD_RE = re.compile(
     r'<script type="application/ld\+json">(.*?)</script>',
@@ -33,10 +36,39 @@ JSONLD_RE = re.compile(
 )
 
 
-def next_date_for(day_name: str, ref: datetime) -> str:
+def load_closures(path: pathlib.Path = CLOSURES) -> set[date]:
+    """Read closure dates: one YYYY-MM-DD or YYYY-MM-DD..YYYY-MM-DD per line, # for comments."""
+    closed: set[date] = set()
+    if not path.exists():
+        return closed
+    for lineno, raw in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+        line = raw.split("#", 1)[0].strip()
+        if not line:
+            continue
+        try:
+            if ".." in line:
+                first, last = (date.fromisoformat(part.strip()) for part in line.split("..", 1))
+            else:
+                first = last = date.fromisoformat(line)
+        except ValueError:
+            sys.exit(f"{path.name}:{lineno}: cannot parse {raw.strip()!r}")
+        if last < first:
+            sys.exit(f"{path.name}:{lineno}: range ends before it starts")
+        while first <= last:
+            closed.add(first)
+            first += timedelta(days=1)
+    return closed
+
+
+def next_date_for(day_name: str, ref: datetime, closed: set[date]) -> str:
     target = WEEKDAYS[day_name]
-    delta = (target - ref.weekday() + 7) % 7
-    return (ref + timedelta(days=delta)).strftime("%Y-%m-%d")
+    candidate = ref.date() + timedelta(days=(target - ref.weekday() + 7) % 7)
+    # A year of weekly occurrences; if every one is closed the closures file is wrong.
+    for _ in range(53):
+        if candidate not in closed:
+            return candidate.strftime("%Y-%m-%d")
+        candidate += timedelta(days=7)
+    sys.exit(f"no open {day_name} within a year; check {CLOSURES.name}")
 
 
 def collect_events(node):
@@ -76,7 +108,7 @@ def update_event_dates(text: str, event_name: str, new_start: str, new_end: str)
     return head + window + tail
 
 
-def update_html(path: pathlib.Path, today: datetime) -> bool:
+def update_html(path: pathlib.Path, today: datetime, closed: set[date]) -> bool:
     text = path.read_text(encoding="utf-8")
     original = text
     for m in JSONLD_RE.finditer(text):
@@ -92,9 +124,9 @@ def update_html(path: pathlib.Path, today: datetime) -> bool:
             name = event.get("name")
             if not (day in WEEKDAYS and start_time and end_time and name):
                 continue
-            date = next_date_for(day, today)
+            when = next_date_for(day, today, closed)
             text = update_event_dates(
-                text, name, f"{date}T{start_time}", f"{date}T{end_time}"
+                text, name, f"{when}T{start_time}", f"{when}T{end_time}"
             )
     if text != original:
         path.write_text(text, encoding="utf-8")
@@ -102,40 +134,22 @@ def update_html(path: pathlib.Path, today: datetime) -> bool:
     return False
 
 
-SITEMAP_LASTMOD_RE = re.compile(r"<lastmod>\d{4}-\d{2}-\d{2}</lastmod>")
-
-
-def bump_sitemap(today: datetime) -> bool:
-    sitemap = REPO / "sitemap.xml"
-    if not sitemap.exists():
-        return False
-    text = sitemap.read_text(encoding="utf-8")
-    today_str = today.strftime("%Y-%m-%d")
-    new_text = SITEMAP_LASTMOD_RE.sub(f"<lastmod>{today_str}</lastmod>", text)
-    if new_text != text:
-        sitemap.write_text(new_text, encoding="utf-8")
-        return True
-    return False
-
-
 def main(argv):
     today = datetime.now(LONDON)
+    closed = load_closures()
     if len(argv) > 1:
         paths = [pathlib.Path(a) for a in argv[1:]]
     else:
         paths = [REPO / "index.html"]
         classes_dir = REPO / "classes"
         if classes_dir.is_dir():
-            paths.extend(sorted(classes_dir.glob("*.html")))
+            paths.extend(sorted(classes_dir.glob("*/index.html")))
 
     html_changed = False
     for p in paths:
-        if p.is_file() and update_html(p, today):
+        if p.is_file() and update_html(p, today, closed):
             print(f"updated events in {p.relative_to(REPO)}")
             html_changed = True
-
-    if html_changed and bump_sitemap(today):
-        print("bumped sitemap.xml lastmod")
 
     if not html_changed:
         print("no event date changes needed")

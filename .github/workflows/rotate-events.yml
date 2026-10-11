@@ -4,7 +4,14 @@ on:
   schedule:
     # Every day at 03:15 UTC (~04:15 BST). Cron uses UTC.
     - cron: '15 3 * * *'
+  # Apply closure changes straight away rather than at the next 03:15 run.
+  push:
+    branches: [main]
+    paths: ['.github/closures.txt']
   workflow_dispatch: {}
+
+concurrency:
+  group: rotate-events
 
 permissions:
   contents: write

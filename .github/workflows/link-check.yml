@@ -16,6 +16,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Mail links are skipped by default in current lychee. --root-dir lets it
+      # resolve root-relative links such as /about.html against the checkout.
       - name: Run lychee link checker
         id: lychee
         uses: lycheeverse/lychee-action@v2
@@ -24,14 +26,45 @@ jobs:
             --no-progress
             --max-concurrency 4
             --accept 200,206,403,429
-            --exclude-mail
+            --root-dir ${{ github.workspace }}
+            --exclude '^tel:'
             './**/*.html'
           fail: false
 
+      # A real run always writes a "# Summary" report. No report means lychee
+      # itself failed (bad flag, bad config), so fail the job loudly instead of
+      # filing an empty issue.
+      - name: Fail if lychee did not run
+        if: steps.lychee.outputs.exit_code != '0'
+        run: |
+          if ! grep -q '^# Summary' lychee/out.md 2>/dev/null; then
+            echo "::error::lychee exited ${{ steps.lychee.outputs.exit_code }} without producing a report; check its arguments."
+            exit 1
+          fi
+
+      - name: Find open link-check issue
+        id: existing
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          number=$(gh issue list --repo "$GITHUB_REPOSITORY" --label link-check --state open \
+            --json number --jq 'sort_by(.number) | last | .number // empty')
+          echo "number=$number" >> "$GITHUB_OUTPUT"
+
+      # One standing issue: update it if open, otherwise create it.
       - name: Open or update issue if links broken
         if: steps.lychee.outputs.exit_code != '0'
         uses: peter-evans/create-issue-from-file@v5
         with:
           title: Broken links found by lychee
           content-filepath: ./lychee/out.md
+          issue-number: ${{ steps.existing.outputs.number }}
           labels: link-check, automated
+
+      - name: Close issue once links are healthy
+        if: steps.lychee.outputs.exit_code == '0' && steps.existing.outputs.number != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue close "${{ steps.existing.outputs.number }}" --repo "$GITHUB_REPOSITORY" \
+            --comment "All links passed on the latest weekly check."
