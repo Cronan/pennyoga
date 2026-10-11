@@ -53,4 +53,4 @@ When something is done, move it to **Done** with the date and commit. When somet
 - **11 Oct 2026.** "Next class" badge skips closures and shows the date after a break. (`2ee9fcf`)
 - **11 Oct 2026.** Internal Markdown notes excluded from the published site via `_config.yml`. (`ca49d79`)
 - **11 Oct 2026.** `claude/fix-housekeeping-workflows` merged into `main` (fast-forward to `ca49d79`).
-- **11 Oct 2026.** Confirmed on the live site: `/SEO-NOTES.html` and `/CLAUDE.html` return 404.
+- **11 Oct 2026.** Confirmed on the live site: `/SEO-NOTES.html`, `/SEO-NOTES.md`, `/CLAUDE.html` and `/CLAUDE.md` all return 404.
