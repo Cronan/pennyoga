@@ -5,7 +5,8 @@ Walks each <script type="application/ld+json"> block in the given HTML files,
 finds every Event with an eventSchedule.byDay (e.g. "Monday"), and rewrites
 startDate/endDate to the next occurrence of that weekday on or after today
 (Europe/London), skipping any date listed in .github/closures.txt. Only the two
-date fields are touched, so the diff stays small.
+date fields are touched, so the diff stays small. Pages that carry the
+next-class badge's closures block also get the current closures copied in.
 
 sitemap.xml is deliberately left alone: a JSON-LD date tick is not a content
 change, and lastmod is only useful to Google if it reflects real edits.
@@ -36,11 +37,11 @@ JSONLD_RE = re.compile(
 )
 
 
-def load_closures(path: pathlib.Path = CLOSURES) -> set[date]:
-    """Read closure dates: one YYYY-MM-DD or YYYY-MM-DD..YYYY-MM-DD per line, # for comments."""
-    closed: set[date] = set()
+def parse_closures(path: pathlib.Path = CLOSURES) -> list[tuple[date, date]]:
+    """Read closures: one YYYY-MM-DD or YYYY-MM-DD..YYYY-MM-DD per line, # for comments."""
+    ranges: list[tuple[date, date]] = []
     if not path.exists():
-        return closed
+        return ranges
     for lineno, raw in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
         line = raw.split("#", 1)[0].strip()
         if not line:
@@ -54,6 +55,13 @@ def load_closures(path: pathlib.Path = CLOSURES) -> set[date]:
             sys.exit(f"{path.name}:{lineno}: cannot parse {raw.strip()!r}")
         if last < first:
             sys.exit(f"{path.name}:{lineno}: range ends before it starts")
+        ranges.append((first, last))
+    return ranges
+
+
+def closed_dates(ranges: list[tuple[date, date]]) -> set[date]:
+    closed: set[date] = set()
+    for first, last in ranges:
         while first <= last:
             closed.add(first)
             first += timedelta(days=1)
@@ -108,6 +116,24 @@ def update_event_dates(text: str, event_name: str, new_start: str, new_end: str)
     return head + window + tail
 
 
+CLOSURES_BLOCK_RE = re.compile(
+    r'(<script type="application/json" id="class-closures">)(.*?)(</script>)',
+    re.DOTALL,
+)
+
+
+def sync_closures_block(path: pathlib.Path, ranges: list[tuple[date, date]], today: datetime) -> bool:
+    """Copy current and future closures into the page for the next-class badge in js/site.js."""
+    text = path.read_text(encoding="utf-8")
+    live = [[first.isoformat(), last.isoformat()] for first, last in sorted(ranges) if last >= today.date()]
+    payload = json.dumps(live, separators=(",", ":"))
+    new_text, count = CLOSURES_BLOCK_RE.subn(lambda m: m.group(1) + payload + m.group(3), text)
+    if count and new_text != text:
+        path.write_text(new_text, encoding="utf-8")
+        return True
+    return False
+
+
 def update_html(path: pathlib.Path, today: datetime, closed: set[date]) -> bool:
     text = path.read_text(encoding="utf-8")
     original = text
@@ -136,7 +162,8 @@ def update_html(path: pathlib.Path, today: datetime, closed: set[date]) -> bool:
 
 def main(argv):
     today = datetime.now(LONDON)
-    closed = load_closures()
+    ranges = parse_closures()
+    closed = closed_dates(ranges)
     if len(argv) > 1:
         paths = [pathlib.Path(a) for a in argv[1:]]
     else:
@@ -149,6 +176,9 @@ def main(argv):
     for p in paths:
         if p.is_file() and update_html(p, today, closed):
             print(f"updated events in {p.relative_to(REPO)}")
+            html_changed = True
+        if p.is_file() and sync_closures_block(p, ranges, today):
+            print(f"synced closures into {p.relative_to(REPO)}")
             html_changed = True
 
     if not html_changed:

@@ -43,36 +43,75 @@
     { day: 4, start: '14:00', end: '15:15', label: 'Thursday afternoon', where: 'Hemel Hempstead' }
   ];
 
+  // Dates Penny isn't teaching, as [first, last] ISO date pairs. Synced from
+  // .github/closures.txt into index.html by the rotate-events workflow.
+  var closures = [];
+  var closuresEl = document.getElementById('class-closures');
+  if (closuresEl) {
+    try { closures = JSON.parse(closuresEl.textContent) || []; } catch (e) { closures = []; }
+  }
+
+  function isClosed(iso) {
+    return closures.some(function (range) { return iso >= range[0] && iso <= range[1]; });
+  }
+
   function londonNow() {
     // Get current date in Europe/London without bringing in a tz library.
     var parts = new Intl.DateTimeFormat('en-GB', {
       timeZone: 'Europe/London',
+      year: 'numeric', month: '2-digit', day: '2-digit',
       weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false
     }).formatToParts(new Date());
     var map = {};
     parts.forEach(function (p) { map[p.type] = p.value; });
     var days = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
     return {
+      year: parseInt(map.year, 10),
+      month: parseInt(map.month, 10),
+      date: parseInt(map.day, 10),
       day: days[map.weekday],
-      hour: parseInt(map.hour, 10),
+      hour: parseInt(map.hour, 10) % 24,
       minute: parseInt(map.minute, 10)
     };
   }
 
-  function minutesUntil(entry, now) {
+  // ISO date (YYYY-MM-DD) of the London calendar day `offset` days from now.
+  function isoDate(now, offset) {
+    return new Date(Date.UTC(now.year, now.month - 1, now.date + offset)).toISOString().slice(0, 10);
+  }
+
+  function toMinutes(hhmm) {
+    var parts = hhmm.split(':');
+    return parseInt(parts[0], 10) * 60 + parseInt(parts[1], 10);
+  }
+
+  // Minutes until the entry's next class that isn't closed (-1 if on now),
+  // plus whether a closure pushed it beyond its usual weekly slot.
+  function nextOccurrence(entry, now) {
     var dayDiff = (entry.day - now.day + 7) % 7;
-    var startParts = entry.start.split(':');
-    var entryMinutes = parseInt(startParts[0], 10) * 60 + parseInt(startParts[1], 10);
     var nowMinutes = now.hour * 60 + now.minute;
-    var endParts = entry.end.split(':');
-    var entryEnd = parseInt(endParts[0], 10) * 60 + parseInt(endParts[1], 10);
-    if (dayDiff === 0 && nowMinutes >= entryMinutes && nowMinutes < entryEnd) {
-      return -1; // happening now
-    }
-    if (dayDiff === 0 && nowMinutes >= entryEnd) {
+    if (dayDiff === 0 && nowMinutes >= toMinutes(entry.end)) {
       dayDiff = 7;
     }
-    return dayDiff * 24 * 60 + (entryMinutes - nowMinutes);
+    var skipped = false;
+    for (var weeks = 0; weeks < 53 && isClosed(isoDate(now, dayDiff)); weeks++) {
+      dayDiff += 7;
+      skipped = true;
+    }
+    if (isClosed(isoDate(now, dayDiff))) {
+      return { entry: entry, minutes: Infinity };
+    }
+    var minutes = dayDiff === 0 && nowMinutes >= toMinutes(entry.start)
+      ? -1 // happening now
+      : dayDiff * 24 * 60 + (toMinutes(entry.start) - nowMinutes);
+    return { entry: entry, minutes: minutes, iso: isoDate(now, dayDiff), skipped: skipped };
+  }
+
+  // "Monday 4 January" for an ISO date.
+  function formatDate(iso) {
+    return new Date(iso + 'T12:00:00Z').toLocaleDateString('en-GB', {
+      weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC'
+    });
   }
 
   function formatTime(hhmm) {
@@ -88,7 +127,7 @@
   if (nextClassEl) {
     var now = londonNow();
     var upcoming = schedule
-      .map(function (entry) { return { entry: entry, minutes: minutesUntil(entry, now) }; })
+      .map(function (entry) { return nextOccurrence(entry, now); })
       .sort(function (a, b) { return a.minutes - b.minutes; })[0];
     var timeEl = nextClassEl.querySelector('[data-next-class-time]');
     var whereEl = nextClassEl.querySelector('[data-next-class-where]');
@@ -98,10 +137,13 @@
       if (timeEl) timeEl.textContent = upcoming.entry.label;
     } else {
       if (labelEl) labelEl.textContent = 'Next class';
-      if (timeEl) timeEl.textContent = upcoming.entry.label + ' at ' + formatTime(upcoming.entry.start);
+      // After a break, "Monday evening" would read as this coming Monday, so give the date.
+      var when = upcoming.skipped ? formatDate(upcoming.iso) : upcoming.entry.label;
+      if (timeEl) timeEl.textContent = when + ' at ' + formatTime(upcoming.entry.start);
     }
     if (whereEl) whereEl.textContent = upcoming.entry.where;
-    nextClassEl.hidden = false;
+    // Everything closed for a year means the closures list is wrong; show nothing.
+    if (upcoming.minutes !== Infinity) nextClassEl.hidden = false;
   }
 
   // ---------- Sticky mobile CTA visibility ----------

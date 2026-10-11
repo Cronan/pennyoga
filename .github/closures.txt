@@ -1,9 +1,10 @@
 # Dates Penny is not teaching.
 #
-# The daily rotate-events workflow skips these when it picks the next class
-# date for the Event structured data, so Google is never told about a class
-# that isn't running. Each class is on its own weekday, so closing a date
-# only affects the class that falls on it.
+# The rotate-events workflow skips these when it picks the next class date
+# for the Event structured data, and copies them into index.html so the
+# "Next class" badge skips them too. Neither Google nor a visitor is told
+# about a class that isn't running. Each class is on its own weekday, so
+# closing a date only affects the class that falls on it.
 #
 # One entry per line: a single date or an inclusive range, ISO format.
 #   2026-12-21                 # one day
