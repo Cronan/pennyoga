@@ -31,7 +31,6 @@ When something is done, move it to **Done** with the date and commit. When somet
   - `claude/seo-notes-review-7xKzh`
   - `claude/seo-website-review-XFXdu`
   - `claude/fix-housekeeping-workflows`
-- **Check Google didn't index the old notes pages.** Search Console → Pages, or search `site:pennyoga.co.uk SEO-NOTES` and `site:pennyoga.co.uk CLAUDE`. If either appears, request removal under Search Console → Removals. The pages themselves already return 404.
 - **Check the first real link check.** Monday's run will be the first in six months that actually checks the external links. Make sure it is green, or read the issue it opens.
 - **Google Business Profile.** This is the biggest single off-site lever. Verify it as a service-area business, list the three venues plus online, and gather reviews there.
 - **Google Search Console:**
@@ -53,4 +52,4 @@ When something is done, move it to **Done** with the date and commit. When somet
 - **11 Oct 2026.** "Next class" badge skips closures and shows the date after a break. (`2ee9fcf`)
 - **11 Oct 2026.** Internal Markdown notes excluded from the published site via `_config.yml`. (`ca49d79`)
 - **11 Oct 2026.** `claude/fix-housekeeping-workflows` merged into `main` (fast-forward to `ca49d79`).
-- **11 Oct 2026.** Confirmed on the live site: `/SEO-NOTES.html`, `/SEO-NOTES.md`, `/CLAUDE.html` and `/CLAUDE.md` all return 404.
+- **11 Oct 2026.** Confirmed on the live site: `/SEO-NOTES.html`, `/SEO-NOTES.md`, `/CLAUDE.html` and `/CLAUDE.md` all return 404, and none of them appear in Google.
