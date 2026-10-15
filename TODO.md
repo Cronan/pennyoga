@@ -35,7 +35,7 @@ When something is done, move it to **Done** with the date and commit. When somet
   - `claude/fix-housekeeping-workflows`
 - **Check the first real link check.** Monday's run will be the first in six months that actually checks the external links. Make sure it is green, or read the issue it opens.
 - **Google Business Profile: tune it.** The profile "Gentle Yoga with Penny" exists, is verified and managed (category Yoga instructor, 5.0 from one review, website and phone correct, 15 interactions). It is the main way into Google's AI Overviews, AI Mode and Gemini for local queries, so the remaining gaps are worth an hour:
-  - **Hours.** It showed "Closed · Opens 13:30" on a Monday morning, which matches no class and reads as unavailable. Recommendation: set hours to when Penny answers enquiries (for example Monday to Friday 9:00 to 19:00) and put class times in the description and in Updates. Once chosen, align `openingHoursSpecification` in `index.html` to the same hours so the two sources agree. (Claude can do that part.)
+  - **Hours.** Set to "Open with no main hours" on 15 October (the edit was pending Google review). The site's `openingHoursSpecification` was removed to match; class times live in the Event schedules.
   - **Service areas.** Berkhamsted, Hemel Hempstead, Leverstock Green, Tring, Kings Langley, Bovingdon. Keep the address hidden.
   - **Description and services.** A short "from the business" paragraph in Penny's words naming the four classes, venues, times and prices. Add each class as a Service with its price.
   - **Photos.** The current photos are foliage. Add Penny's portrait as the profile photo, plus each venue (the three card photos on the site are already licensed for this) and, if students agree, a class in progress.
